@@ -1,6 +1,6 @@
 [submodule "themes/after-dark"]
 	path = themes/after-dark
-	url = https://githubfast.com/getzola/after-dark.git
+	url = https://github.com/getzola/after-dark.git
 [submodule "themes/adidoks"]
 	path = themes/adidoks
-	url = https://githubfast.com/aaranxu/adidoks.git
+	url = https://github.com/aaranxu/adidoks.git
