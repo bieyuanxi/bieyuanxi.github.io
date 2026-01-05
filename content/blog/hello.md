@@ -1,6 +1,6 @@
 +++
 title = "Hello, World!"
-date = "2093-02-16"
+date = "2000-01-01"
 description = "My first post using the tabi theme."
 
 [taxonomies]
