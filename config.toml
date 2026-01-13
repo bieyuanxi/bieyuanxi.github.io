@@ -32,6 +32,14 @@ index_format = "elasticlunr_json"
 bottom_footnotes = true
 smart_punctuation = true
 
+# See: https://www.getzola.org/documentation/content/syntax-highlighting/
+[markdown.highlighting]
+theme = "dark-plus"
+
+# Whether to use inline hex colours (`inline`) or CSS classes (`class`) 
+style = "class"
+# When set to "true", missing highlight languages are treated as errors. 
+error_on_missing_language = true
 
 [extra]
 # Check out the documentation (or the comments below) to learn how to customise tabi:
