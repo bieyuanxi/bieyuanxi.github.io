@@ -1,8 +1,8 @@
 +++
 title = "Git 备忘录"
 date = "2026-01-18"
-description = "git常用命令备忘录"
-draft = true
+description = "git常用操作备忘录"
+draft = false
 
 [taxonomies]
 tags = ["git"]
@@ -12,7 +12,21 @@ tags = ["git"]
 - [Codeberg - Tags and Releases](https://docs.codeberg.org/git/using-tags/)
 - [Semantic Versioning](http://semver.org/)
 
-# clone
+
+# 常用操作
+## 1. 创建追踪远程仓库的分支
+```sh
+$ git checkout -b upstream_main upstream/main
+$ git switch -c upstream_main upstream/main # 等价
+```
+
+## 2. 切换当前分支追踪的远程分支
+```sh
+$ git branch -u <upstream>  
+$ git branch --set-upstream-to <upstream>   # 等价
+```
+
+# git clone
 用于克隆远程仓库。由若干操作组成：创建本地空仓库、添加远程仓库地址、执行`git fetch`拉取远程数据、将远程默认分支(`main`)检出到本地工作区。
 
 ```sh
@@ -43,8 +57,27 @@ custom_name git@github.com:bieyuanxi/bieyuanxi.github.io.git (push)
 $ git clone git@github.com:bieyuanxi/bieyuanxi.github.io.git --depth <depth>
 ```
 
+# git branch
+TODO
 
-# fetch
+### 用例
+```sh
+# 设置当前分支追踪的上游
+$ git branch -u <upstream>  # 等价
+$ git branch --set-upstream-to <upstream>
+
+$ git branch --set-upstream-to custom_name/dev
+
+# 查看本地所有分支的跟踪情况
+$ git branch -vv
+
+# 删除分支
+$ git branch -d <branch_name> # 只删除合并了的分支
+$ git branch -D <branch_name> # 强制删除(不管有没有合并)
+```
+
+
+# git fetch
 更新本地已有仓库，从远程仓库拉取最新的提交记录、分支、标签等元数据到本地，但不会合并到工作区 / 当前分支，仅同步 “远程信息”。
 
 这就是为什么远程仓库明明有提交，但是执行`git status`提示`nothing to commit, working tree clean`，因为必须执行`git fetch`之后才能同步远程仓库的改动。
@@ -58,8 +91,14 @@ $ git branch -vv
 * main 22b1c28 [upstream/main] This is a commit message.
 ```
 
-### 用例
+| 命令 | 远程仓库范围 | 分支范围 |适用场景|
+| ---- | ---- | ---- | ---- |
+|`git fetch`| 仅默认远程（origin）| 该远程的所有分支| 同步默认远程的所有分支数据|
+|`git fetch upstream` |指定远程（upstream）| 该远程的所有分支| 明确同步某一个远程的所有分支|
+|`git fetch upstream dev` |指定远程（upstream）| 仅指定分支（dev）| 只同步单个分支 |
+|`git fetch --all` |所有远程仓库| 每个远程的所有分支 |批量同步所有远程的所有分支|
 
+### 用例
 ```sh
 # 拉取当前分支关联的远程仓库所有分支、标签、提交记录等元数据，
 # 同步到本地的远程追踪分支（如 origin/main、origin/dev），但不会修改本地工作区或本地分支的代码
@@ -77,21 +116,15 @@ Your branch is behind 'upstream/main' by 1 commit, and can be fast-forwarded.
   (use "git pull" to update your local branch)
 
 nothing to commit, working tree clean
-
-# 拉取指定远程仓库的所有分支
-$ git fetch upstream
-
-# 拉取指定远程仓库的指定分支
-$ git fetch upstream main
 ```
 
 
-# merge
+# git merge
 TODO
 
 
 
-# pull
+# git pull
 `git pull`是 `git fetch + git merge` 的自动组合命令。它会一次性完成拉取远程数据(`git fetch`)和合并到本地分支(`git merge`)两个步骤。
 
 ### 用例
@@ -107,7 +140,7 @@ $ git pull origin main
 
 
 
-# rebase
+# git rebase
 TODO
 
 
