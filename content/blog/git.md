@@ -16,17 +16,28 @@ tags = ["git"]
 用于克隆远程仓库。由若干操作组成：创建本地空仓库、添加远程仓库地址、执行`git fetch`拉取远程数据、将远程默认分支(`main`)检出到本地工作区。
 
 ```sh
+$ mkdir test
+$ cd test
+$ git init  # 初始化本地空仓库
+$ git remote add origin https://github.com/xxx/xxx.git  # 添加远程地址
+$ git fetch origin  # 拉取远程数据（成功）
+$ ls  # 看不到代码文件（仅 .git 目录有元数据）
+$ git checkout main  # 检出分支后，才会生成工作区文件
+```
+
+### 用例
+```sh
 $ git clone <repo> 
 $ git clone git@github.com:bieyuanxi/bieyuanxi.github.io.git
 
 # use <name> instead of 'origin' to track upstream
 # 给上游远程仓库起一个新的名字，之后可以用 git remote -v 查看
 $ git clone <repo> -o <name>
-$ git clone git@github.com:bieyuanxi/bieyuanxi.github.io.git -o upstream_wxw
+$ git clone git@github.com:bieyuanxi/bieyuanxi.github.io.git -o custom_name
 
 $ git remote -v
-upstream git@github.com:bieyuanxi/bieyuanxi.github.io.git (fetch)
-upstream git@github.com:bieyuanxi/bieyuanxi.github.io.git (push)
+custom_name git@github.com:bieyuanxi/bieyuanxi.github.io.git (fetch)
+custom_name git@github.com:bieyuanxi/bieyuanxi.github.io.git (push)
 
 # create a shallow clone of that depth
 $ git clone git@github.com:bieyuanxi/bieyuanxi.github.io.git --depth <depth>
@@ -35,6 +46,71 @@ $ git clone git@github.com:bieyuanxi/bieyuanxi.github.io.git --depth <depth>
 
 # fetch
 更新本地已有仓库，从远程仓库拉取最新的提交记录、分支、标签等元数据到本地，但不会合并到工作区 / 当前分支，仅同步 “远程信息”。
+
+这就是为什么远程仓库明明有提交，但是执行`git status`提示`nothing to commit, working tree clean`，因为必须执行`git fetch`之后才能同步远程仓库的改动。
+
+```sh
+# 可以使用git status 或者 git branch -vv查看当前分支追踪的远程仓库名称和分支
+$ git status
+Your branch is up to date with 'upstream/main'.
+
+$ git branch -vv
+* main 22b1c28 [upstream/main] This is a commit message.
+```
+
+### 用例
+
+```sh
+# 拉取当前分支关联的远程仓库所有分支、标签、提交记录等元数据，
+# 同步到本地的远程追踪分支（如 origin/main、origin/dev），但不会修改本地工作区或本地分支的代码
+$ git fetch
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 5 (delta 2), reused 5 (delta 2), pack-reused 0 (from 0)
+Unpacking objects: 100% (5/5), 2.67 KiB | 1.34 MiB/s, done.
+From github.com:bieyuanxi/bieyuanxi.github.io
+   dfed93c..22b1c28  main       -> upstream/main
+$ git status
+On branch main
+Your branch is behind 'upstream/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+nothing to commit, working tree clean
+
+# 拉取指定远程仓库的所有分支
+$ git fetch upstream
+
+# 拉取指定远程仓库的指定分支
+$ git fetch upstream main
+```
+
+
+# merge
+TODO
+
+
+
+# pull
+`git pull`是 `git fetch + git merge` 的自动组合命令。它会一次性完成拉取远程数据(`git fetch`)和合并到本地分支(`git merge`)两个步骤。
+
+### 用例
+```sh
+$ git pull [<repository>]
+
+# 拉取默认远程仓库（当前本地分支关联的远程仓库）的对应默认分支（当前本地分支关联的远程追踪分支）
+$ git pull
+
+# 拉取&合并指定远程仓库的指定分支
+$ git pull origin main
+```
+
+
+
+# rebase
+TODO
+
+
 
 # Tags and Releases
 ## 1. Tags
