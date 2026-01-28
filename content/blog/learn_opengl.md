@@ -1,5 +1,5 @@
 +++
-title = "OpenGL
+title = "OpenGL"
 date = "2000-01-01"
 description = ""
 draft = true
