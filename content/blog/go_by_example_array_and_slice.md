@@ -27,7 +27,7 @@ tags = ["golang", "array", "slice"]
 // ...：编译器负责推导数组大小，也可以手动指定大小
 // 编译器推导的array类型为 [6]int，大小为6*8=48 B
 array := [...]int{
-	1, 2, 3, 4, 5, 6,
+    1, 2, 3, 4, 5, 6,
 }
 
 fmt.Println("size of [6]int: ", unsafe.Sizeof(array))
@@ -69,8 +69,6 @@ fmt.Println("uninit:", s, s == nil, len(s) == 0)	// uninit: [] true true
 ```
 
 
-
-To create a slice with non-zero length, use the builtin make. Here we make a slice of strings of length 3 (initially zero-valued). By default a new slice’s capacity is equal to its length; if we know the slice is going to grow ahead of time, it’s possible to pass a capacity explicitly as an additional parameter to make.
 若要创建一个长度非零的切片，可使用内置函数 `make`。这里我们创建了一个长度为 3 的字符串类型切片（初始值均为零值）。默认情况下，新创建切片的容量等于其长度；如果提前知道该切片后续会扩容，可在调用 `make` 时额外传入一个参数，显式指定切片的容量。
 ```go
 s1 := make([]string, 3)
@@ -88,12 +86,12 @@ fmt.Println("set:", s)
 fmt.Println("get:", s[2])
 
 s2[7] = "will panic"	// panic: runtime error: index out of range [7] with length 3
-
 ```
 
-使用内置函数`len`获取切片长度。
+使用内置函数`len`获取切片长度，使用内置函数`cap`获取切片容量。
 ```go
 fmt.Println("len:", len(s))
+fmt.Println("cap:", cap(s))
 ```
 
 
