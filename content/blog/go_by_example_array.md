@@ -2,7 +2,7 @@
 title = "Go by Example: Arrays"
 date = "2026-02-14"
 description = ""
-draft = true
+draft = false
 
 [taxonomies]
 tags = ["golang", "array"]
