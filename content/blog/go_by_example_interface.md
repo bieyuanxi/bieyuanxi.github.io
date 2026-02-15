@@ -2,7 +2,7 @@
 title = "Go by Example: Interfaces"
 date = "2026-02-15"
 description = ""
-draft = true
+draft = false
 
 [taxonomies]
 tags = ["golang", "interface"]
@@ -98,6 +98,58 @@ iface := Geometry(&rect)
 fmt.Println("size of interface: ", unsafe.Sizeof(iface))
 // size of interface:  16
 ```
+
+{% mermaid() %}
+graph TD
+    %% 接口变量层
+    subgraph InterfaceValue ["Interface Value (16 bytes)"]
+        direction LR
+        A["itable: 8 bytes"]
+        B["data: 8 bytes"]
+    end
+
+    %% itable层
+    subgraph Itable ["runtime.itable"]
+        direction LR
+        A1["typ: *runtime._type"]
+        A2["fun[0]: func ptr"]
+        A3["fun[1]: func ptr"]
+    end
+
+    %% 类型信息层
+    subgraph TypeInfo ["runtime._type (T's type info)"]
+        direction LR
+        TI1["name: T"]
+        TI2["size: XX bytes"]
+        TI3["kind: ptr/struct"]
+    end
+
+    %% 具体值层
+    subgraph ConcreteValue ["Concrete Value (*T)"]
+        direction LR
+        C1["Pointer to T instance"]
+    end
+
+    %% 结构体实例层
+    subgraph TInstance ["T struct instance"]
+        direction LR
+        TI["Field1: value1"]
+        TII["Field2: value2"]
+    end
+
+    %% 连线
+    A --> Itable
+    B --> ConcreteValue
+    A1 --> TypeInfo
+    C1 --> TInstance
+    A2 --> M1["(*T).Method1()"]
+    A3 --> M2["(*T).Method2()"]
+
+    %% 简化样式
+    classDef core fill:#f0f8ff,stroke:#20b2aa,stroke-width:1px;
+    class InterfaceValue,Itable,ConcreteValue core;
+
+{% end %}
 
 `golang`在编译器会优化内存占用，例如接口无方法时不额外分配堆内存，仅仅保存实际类型；数据类型小于等于指针大小时直接存储其值。
 
