@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://bieyuanxi.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;bieyuanxi.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>01背包</tabi:current_section>
+    </tabi:metadata><title>Terra's Blog - 01背包</title>
+        <subtitle>YOUR_SITE_DESCRIPTION</subtitle>
+    <link href="https://bieyuanxi.github.io/tags/01bei-bao/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://bieyuanxi.github.io/tags/01bei-bao/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-12-05T00:00:00+00:00</updated><id>https://bieyuanxi.github.io/tags/01bei-bao/atom.xml</id><entry xml:lang="en">
+        <title>动态规划</title>
+        <published>2025-12-05T00:00:00+00:00</published>
+        <updated>2025-12-05T00:00:00+00:00</updated>
+        <author>
+            <name>Terra</name>
+        </author>
+        <link rel="alternate" href="https://bieyuanxi.github.io/blog/dp/" type="text/html"/>
+        <id>https://bieyuanxi.github.io/blog/dp/</id>
+        
+            <content type="html">&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;combination-sum-iv&#x2F;solutions&#x2F;2706336&#x2F;ben-zhi-shi-pa-lou-ti-cong-ji-yi-hua-sou-y52j&#x2F;&quot;&gt;组合总和 Ⅳ 灵茶山艾府题解&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;xiang-guan-li-ti&quot;&gt;相关例题&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;完全背包
+&lt;ul&gt;
+&lt;li&gt;求排列数：&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;combination-sum-iv&#x2F;description&#x2F;&quot;&gt;组合总和 Ⅳ&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;求组合数：&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;coin-change&#x2F;description&#x2F;?envType=study-plan-v2&amp;amp;envId=top-100-liked&quot;&gt;零钱兑换&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;01背包
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;house-robber&#x2F;description&#x2F;?envType=study-plan-v2&amp;amp;envId=top-100-liked&quot;&gt;打家劫舍&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;fen-lei&quot;&gt;分类&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;code&gt;01 背包&lt;&#x2F;code&gt;和&lt;code&gt;完全背包&lt;&#x2F;code&gt;是动态规划中最基础也最核心的两类背包问题，核心区别在于&lt;strong&gt;物品的选取次数限制&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;类型&lt;&#x2F;th&gt;&lt;th&gt;规则&lt;&#x2F;th&gt;&lt;th&gt;类比&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;01 背包&lt;&#x2F;td&gt;&lt;td&gt;每种物品只有 1 个，要么选、要么不选（0 或 1 次）&lt;&#x2F;td&gt;&lt;td&gt;买限量款商品，每件只有 1 件，买或不买&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;完全背包&lt;&#x2F;td&gt;&lt;td&gt;每种物品有无限个，可以选 0 次、1 次、2 次…… 直到超出背包容量&lt;&#x2F;td&gt;&lt;td&gt;便利店买矿泉水，想拿多少拿多少，只要装得下&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h1 id=&quot;wan-quan-bei-bao&quot;&gt;完全背包&lt;&#x2F;h1&gt;
+&lt;p&gt;完全背包的定义是：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;有 n 种物品，每种物品可以&lt;strong&gt;无限选取&lt;&#x2F;strong&gt;；&lt;&#x2F;li&gt;
+&lt;li&gt;目标是选出若干物品，使其总重量≤背包容量（或恰好等于），求「最大价值」「组合数」「方案数」等。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;完全背包有排列数和组合数两种变体。&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;分类&lt;&#x2F;th&gt;&lt;th&gt;求组合数&lt;&#x2F;th&gt;&lt;th&gt;求排列数&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;核心目标&lt;&#x2F;td&gt;&lt;td&gt;不同物品顺序算同一种组合（如 [1,2] 和 [2,1] 算 1 种）&lt;&#x2F;td&gt;&lt;td&gt;不同物品顺序算不同排列（如 [1,2] 和 [2,1] 算 2 种）&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;遍历顺序&lt;&#x2F;td&gt;&lt;td&gt;先遍历物品，再遍历背包容量&lt;&#x2F;td&gt;&lt;td&gt;先遍历背包容量，再遍历物品&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;状态转移逻辑&lt;&#x2F;td&gt;&lt;td&gt;每个物品只在 “首次遍历” 时贡献次数&lt;&#x2F;td&gt;&lt;td&gt;每个容量下，所有物品都能重复贡献次数&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;qiu-zu-he-shu-de-bian-li-shun-xu&quot;&gt;求组合数的遍历顺序&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 先遍历物品，再遍历容量（保证物品顺序固定）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;for&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt; num : nums) {&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;          &#x2F;&#x2F; 先选物品1，再选物品2，不会出现2在1前面&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    for&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; s = num; s &amp;lt;= target; ++s) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;        dp&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[s] +=&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; dp&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[s - num];&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;qiu-pai-lie-shu-de-bian-li-shun-xu&quot;&gt;求排列数的遍历顺序&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 先遍历容量，再遍历物品（允许物品顺序任意）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;for&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; s =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;; s &amp;lt;= target; ++s) {&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;  &#x2F;&#x2F; 对每个容量，遍历所有物品&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    for&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt; num : nums) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        if&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; (s &amp;gt;= num)&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; dp&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[s] +=&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; dp&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[s - num];&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h1 id=&quot;01bei-bao&quot;&gt;01背包&lt;&#x2F;h1&gt;
+&lt;p&gt;有 n 种不同的物品，每种物品 仅有 1 个（&lt;strong&gt;不可重复选取&lt;&#x2F;strong&gt;），每个物品有两个属性：「重量 w [i]」和「价值 v [i]」；同时有一个容量为 C 的背包。&lt;&#x2F;p&gt;
+&lt;p&gt;目标是：从这 n 种物品中选择若干个放入背包，在 &lt;strong&gt;物品总重量不超过背包容量&lt;&#x2F;strong&gt; C 的前提下，使得 &lt;strong&gt;所选物品的总价值最大&lt;&#x2F;strong&gt;；或衍生问题（如 “恰好装满背包的方案数”“最小价值” 等）。&lt;&#x2F;p&gt;
+</content>
+        </entry>
+</feed>

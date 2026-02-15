@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://bieyuanxi.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;bieyuanxi.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>数据结构</tabi:current_section>
+    </tabi:metadata><title>Terra's Blog - 数据结构</title>
+        <subtitle>YOUR_SITE_DESCRIPTION</subtitle>
+    <link href="https://bieyuanxi.github.io/tags/shu-ju-jie-gou/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://bieyuanxi.github.io/tags/shu-ju-jie-gou/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2023-11-02T00:00:00+00:00</updated><id>https://bieyuanxi.github.io/tags/shu-ju-jie-gou/atom.xml</id><entry xml:lang="en">
+        <title>基本概念</title>
+        <published>2023-11-02T00:00:00+00:00</published>
+        <updated>2023-11-02T00:00:00+00:00</updated>
+        <author>
+            <name>Terra</name>
+        </author>
+        <link rel="alternate" href="https://bieyuanxi.github.io/blog/data-structure/" type="text/html"/>
+        <id>https://bieyuanxi.github.io/blog/data-structure/</id>
+        
+            <content type="html">&lt;h1 id=&quot;ji-ben-gai-nian&quot;&gt;基本概念&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据类型&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据元素&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据对象&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据项&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据结构&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据结构三要素：逻辑结构，存储结构，数据的运算&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h1 id=&quot;xian-xing-biao&quot;&gt;线性表&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;xian-xing-biao-de-lei-xing-ding-yi&quot;&gt;线性表的类型定义&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;定义：具有相同数据类型的n个数据元素的&lt;strong&gt;有限&lt;&#x2F;strong&gt;序列&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;基本操作：&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;xian-xing-biao-de-shun-xu-biao-shi&quot;&gt;线性表的顺序表示&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用一组地址&lt;strong&gt;连续&lt;&#x2F;strong&gt;的存储单元依次存储线性表的数据结构（逻辑上相邻，物理上也相邻）&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;静态分配&amp;amp;动态分配：静态分配空间固定；动态分配允许申请更大的空间，拷贝原来的数据到新的空间&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特点：随机访问、存储密度高、逻辑上相邻物理上也相邻，插入删除移动大量数据元素&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;shi-jian-fu-za-du&quot;&gt;时间复杂度&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;插入 O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;删除 O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;LocateElem 按值查找(顺序查找) O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;GetElem O(1)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;xian-xing-biao-de-lian-shi-biao-shi&quot;&gt;线性表的链式表示&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实现方式：不带头结点（空表判断L == NULL），代码书写不方便、带头结点（L-&amp;gt;next == NULL），代码书写方便（相当于链表至少有一个元素，删除结点、插入结点时不用考虑首元结）&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特点：插入删除不需要移动数据元素，只需要修改指针；不能随机存取，只能从表头遍历；浪费了一定空间；&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;xian-xing-lian-biao-dan-lian-biao&quot;&gt;线性链表（单链表）&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用一组&lt;strong&gt;任意的&lt;&#x2F;strong&gt;（可以连续也可以不连续）存储单元存储线性表的数据元素（逻辑上相邻，物理上不一定相邻）&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;结点 数据域+指针域&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;头指针：指示链表中第一个结点（第一个数据元素的存储映像）的存储位置。链表的存取从&lt;strong&gt;头指针&lt;&#x2F;strong&gt;开始&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;头结点：单链表第一个结点之前附设的结点，好处：简化代码TODO&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;首元结点：第一个数据元素，单链表第一个结点&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h4 id=&quot;ji-ben-cao-zuo&quot;&gt;基本操作&lt;&#x2F;h4&gt;
+&lt;ol&gt;
+&lt;li&gt;建立操作：头插法、尾插法&lt;&#x2F;li&gt;
+&lt;li&gt;LocateElem 按值查找(顺序查找) O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;GetElem O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;插入 若给定了结点指针，O(1)；若给定的是index，由于需要用GetElem获得指针，则为o(n)&lt;&#x2F;li&gt;
+&lt;li&gt;删除 同插入（还需要free）&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;jing-tai-lian-biao&quot;&gt;静态链表&lt;&#x2F;h3&gt;
+&lt;p&gt;TODO&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;xun-huan-lian-biao&quot;&gt;循环链表&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;特点：表中最后一个结点的指针域指向头结点，整个链表形成一个环
+仅设置尾指针，不设置头指针能使两个线性表合并时间为O(1)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;shuang-xiang-lian-biao&quot;&gt;双向链表&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;克服了寻找PriorElem结点为O(n)的缺点&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h4 id=&quot;ji-ben-cao-zuo-1&quot;&gt;基本操作&lt;&#x2F;h4&gt;
+&lt;ol&gt;
+&lt;li&gt;插入&lt;&#x2F;li&gt;
+&lt;li&gt;删除&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;cong-shi-jian-kong-jian-fu-za-du-de-jiao-du-bi-jiao-xian-xing-biao-liang-chong-cun-chu-jie-gou-de-bu-tong-te-dian-ji-qi-gua-yong-chang-he-todo&quot;&gt;从时间、空间复杂度的角度比较线性表两种存储结构的不同特点及其适用场合 TODO&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;时间：顺序表随机访问，&lt;&#x2F;li&gt;
+&lt;li&gt;空间：&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;hr &#x2F;&gt;
+&lt;ol&gt;
+&lt;li&gt;存取（读写）方式：顺序表可以顺序存取&amp;amp;随机存取&lt;&#x2F;li&gt;
+&lt;li&gt;逻辑结构&amp;amp;物理结构：顺序表逻辑上连续物理上也连续&lt;&#x2F;li&gt;
+&lt;li&gt;插入、删除：顺序表移动元素O(n);链表只需修改指针（给定指针的情况）&lt;&#x2F;li&gt;
+&lt;li&gt;按值查找：顺序表有序时可以折半查找O(logn)，无序时O(n)&lt;&#x2F;li&gt;
+&lt;li&gt;按序号查找：顺序表可以随机访问O(1)&lt;&#x2F;li&gt;
+&lt;li&gt;存储结构：顺序表连续分配，静态分配&amp;amp;动态分配（拷贝）；&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;yi-yuan-duo-xiang-shi-de-biao-shi-ji-xiang-jia&quot;&gt;一元多项式的表示及相加&lt;&#x2F;h2&gt;
+&lt;h1 id=&quot;zhan-he-dui-lie&quot;&gt;栈和队列&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;zhan&quot;&gt;栈&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;定义：栈是限定仅在表尾进行插入或者删操作的线性表。
+栈顶：表尾端；栈底：表头端
+特点：后进先出（LIFO）&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;zhan-yu-di-gui-shi-xian-di-gui-suan-fa-zhong-zhan-de-zuo-yong&quot;&gt;栈与递归实现（递归算法中栈的作用）&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;zhan-de-ying-yong-ju-li&quot;&gt;栈的应用举例&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;数制转换&lt;&#x2F;li&gt;
+&lt;li&gt;括号匹配的检验&lt;&#x2F;li&gt;
+&lt;li&gt;行编辑程序&lt;&#x2F;li&gt;
+&lt;li&gt;迷宫求解&lt;&#x2F;li&gt;
+&lt;li&gt;表达式求值&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        </entry>
+</feed>

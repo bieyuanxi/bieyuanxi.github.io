@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://bieyuanxi.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;bieyuanxi.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>redis</tabi:current_section>
+    </tabi:metadata><title>Terra's Blog - redis</title>
+        <subtitle>YOUR_SITE_DESCRIPTION</subtitle>
+    <link href="https://bieyuanxi.github.io/tags/redis/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://bieyuanxi.github.io/tags/redis/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2026-01-28T00:00:00+00:00</updated><id>https://bieyuanxi.github.io/tags/redis/atom.xml</id><entry xml:lang="en">
+        <title>Redis String</title>
+        <published>2026-01-28T00:00:00+00:00</published>
+        <updated>2026-01-28T00:00:00+00:00</updated>
+        <author>
+            <name>Terra</name>
+        </author>
+        <link rel="alternate" href="https://bieyuanxi.github.io/blog/redis-string/" type="text/html"/>
+        <id>https://bieyuanxi.github.io/blog/redis-string/</id>
+        
+            <content type="html">&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;valkey.io&#x2F;commands&#x2F;#string&quot;&gt;valkey commands: string&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;ke-yong-ming-ling&quot;&gt;可用命令&lt;&#x2F;h1&gt;
+&lt;p&gt;String Operations on the String data type&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;APPEND Appends a string to the value of a key. Creates the key if it doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;DECR Decrements the integer value of a key by one. Uses 0 as initial value if the key doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;DECRBY Decrements a number from the integer value of a key. Uses 0 as initial value if the key doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;DELIFEQ Delete key if value matches string.&lt;&#x2F;li&gt;
+&lt;li&gt;GET Returns the string value of a key.&lt;&#x2F;li&gt;
+&lt;li&gt;GETDEL Returns the string value of a key after deleting the key.&lt;&#x2F;li&gt;
+&lt;li&gt;GETEX Returns the string value of a key after setting its expiration time.&lt;&#x2F;li&gt;
+&lt;li&gt;GETRANGE Returns a substring of the string stored at a key.&lt;&#x2F;li&gt;
+&lt;li&gt;GETSET Returns the previous string value of a key after setting it to a new value.&lt;&#x2F;li&gt;
+&lt;li&gt;INCR Increments the integer value of a key by one. Uses 0 as initial value if the key doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;INCRBY Increments the integer value of a key by a number. Uses 0 as initial value if the key doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;INCRBYFLOAT Increment the floating point value of a key by a number. Uses 0 as initial value if the key doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;LCS Finds the longest common substring.&lt;&#x2F;li&gt;
+&lt;li&gt;MGET Atomically returns the string values of one or more keys.&lt;&#x2F;li&gt;
+&lt;li&gt;MSET Atomically creates or modifies the string values of one or more keys.&lt;&#x2F;li&gt;
+&lt;li&gt;MSETNX Atomically modifies the string values of one or more keys only when all keys don’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;PSETEX Sets both string value and expiration time in milliseconds of a key. The key is created if it doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;SET Sets the string value of a key, ignoring its type. The key is created if it doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;SETEX Sets the string value and expiration time of a key. Creates the key if it doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;SETNX Set the string value of a key only when the key doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;SETRANGE Overwrites a part of a string value with another by an offset. Creates the key if it doesn’t exist.&lt;&#x2F;li&gt;
+&lt;li&gt;STRLEN Returns the length of a string value.&lt;&#x2F;li&gt;
+&lt;li&gt;SUBSTR Returns a substring from a string value.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;set&quot;&gt;SET&lt;&#x2F;h2&gt;
+&lt;p&gt;将键 &lt;code&gt;key&lt;&#x2F;code&gt; 的值设为指定字符串 &lt;code&gt;value&lt;&#x2F;code&gt;。若该键已存有值，则无论原数据类型如何，都会被直接覆盖。默认情况下，当 &lt;code&gt;SET&lt;&#x2F;code&gt; 命令执行成功时，该键原本关联的生存时间（&lt;code&gt;TTL&lt;&#x2F;code&gt;）也会被清除。&lt;&#x2F;p&gt;
+&lt;p&gt;命令变种：&lt;code&gt;SETEX&lt;&#x2F;code&gt;，&lt;code&gt;SETNX&lt;&#x2F;code&gt;，&lt;code&gt;PSETEX&lt;&#x2F;code&gt;，&lt;code&gt;GETSET&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yu-fa&quot;&gt;语法&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;SET&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; NX&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; XX&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; IFEQ&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; comparison-value ]&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET ]&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; EX seconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; PX&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; milliseconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; EXAT&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; unix-time-seconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; PXAT&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; unix-time-milliseconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; KEEPTTL&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; ]&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;SET 命令支持一组可修改其行为的选项，具体如下：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;EX seconds —— 设置键的过期时间，单位为秒（需传入正整数）。&lt;&#x2F;li&gt;
+&lt;li&gt;PX milliseconds —— 设置键的过期时间，单位为毫秒（需传入正整数）。&lt;&#x2F;li&gt;
+&lt;li&gt;EXAT timestamp-seconds —— 设置键的过期 Unix 时间戳，单位为秒（需传入正整数）。&lt;&#x2F;li&gt;
+&lt;li&gt;PXAT timestamp-milliseconds —— 设置键的过期 Unix 时间戳，单位为毫秒（需传入正整数）。&lt;&#x2F;li&gt;
+&lt;li&gt;NX —— 仅当键不存在时，才执行设置操作。&lt;&#x2F;li&gt;
+&lt;li&gt;XX —— 仅当键已存在时，才执行设置操作。&lt;&#x2F;li&gt;
+&lt;li&gt;IFEQ comparison-value —— 仅当键的现有值与指定的比对值完全匹配时，才执行设置操作。若键存储的值并非字符串类型，则返回错误并终止 SET 命令的执行。&lt;&#x2F;li&gt;
+&lt;li&gt;KEEPTTL —— 保留该键原本关联的生存时间（TTL），不会因设置新值而清空过期时间。&lt;&#x2F;li&gt;
+&lt;li&gt;GET —— 返回键原本存储的旧字符串值；若键不存在，则返回 nil。若键存储的值并非字符串(String)类型（例如存的是列表、哈希），则返回错误并终止 SET 命令的执行。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;yong-li&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET mykey &amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;# Set a value and an expiry time.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET anotherkey &amp;quot;will expire in a minute&amp;quot; EX&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 60&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;# Conditionally set a value.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET foo &amp;quot;Initial Value&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET foo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Initial Value&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET foo &amp;quot;New Value&amp;quot; IFEQ &amp;quot;Initial Value&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET foo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;New Value&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;# 分布式锁，key是资源名称，value是锁持有者随机生成的token，释放锁时客户端应该检查确认是自己生成的锁再释放&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;localhost:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET res_lock a-random-token NX&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;setex&quot;&gt;SETEX&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;SETEX&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key seconds value&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;等价于&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;SET&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value EX seconds&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;setnx&quot;&gt;SETNX&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;SET&lt;&#x2F;strong&gt; if &lt;strong&gt;N&lt;&#x2F;strong&gt;ot e&lt;strong&gt;X&lt;&#x2F;strong&gt;ists.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;SETNX&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;yong-li-1&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SETNX mykey &amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SETNX mykey &amp;quot;World&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;setrange&quot;&gt;SETRANGE&lt;&#x2F;h2&gt;
+&lt;p&gt;覆盖键key中存储的字符串的指定部分：从指定偏移量开始，以待写入值value的完整长度为覆盖范围完成写入。若指定的偏移量大于键对应字符串的当前长度，会自动用空字节（0 字节） 填充字符串至该偏移量的位置，以匹配写入起始位置；不存在的键会被视作空字符串，因此本命令会自动扩展该键对应的字符串长度，确保能在指定偏移量处写入value。&lt;&#x2F;p&gt;
+&lt;p&gt;注意：可设置的最大偏移量为 2^29 - 1（即 536870911），这是因为 Valkey 中字符串类型的大小上限为 512MB。若需要写入的数据超出该长度限制，可通过多个键分片存储来实现。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Patterns: 借助 SETRANGE 及其同类型的 GETRANGE 命令，可以将 Valkey 字符串当作支持 O (1) 随机访问的线性数组来使用。在诸多实际业务场景中，这都是一种极快且高效的存储方式。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;SETRANGE&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key offset value&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;yong-li-2&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET key1 &amp;quot;Hello World&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SETRANGE key1&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 6&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; &amp;quot;Valkey&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 12&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET key1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello Valkey&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;# zero padding&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SETRANGE key2&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 6&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; &amp;quot;Valkey&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 12&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET key2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;\x00\x00\x00\x00\x00\x00Valkey&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;mset&quot;&gt;MSET&lt;&#x2F;h2&gt;
+&lt;p&gt;将指定的多个键分别设为对应的取值。MSET 会像普通的 SET 命令一样，用新值覆盖键的原有值；若你不想覆盖已有值，可使用 MSETNX 命令。
+MSET 是&lt;strong&gt;原子操作&lt;&#x2F;strong&gt;，因此所有指定的键会被一次性完成赋值。客户端不会出现「部分键已更新、其余键仍保持原值」的中间可见状态。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;MSET&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value ... ]&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;yong-li-3&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; MSET key1 &amp;quot;Hello&amp;quot; key2 &amp;quot;World&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET key1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET key2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;World&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;get&quot;&gt;GET&lt;&#x2F;h2&gt;
+&lt;p&gt;获取key对应的值。如果键不存在，返回&lt;code&gt;nil&lt;&#x2F;code&gt;。如果值不是string类型，返回错误。GET 是纯&lt;strong&gt;读命令&lt;&#x2F;strong&gt;，不会修改键的任何元数据（包括过期时间）。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yong-li-4&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET nonexisting&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;nil&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET mykey &amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;getex&quot;&gt;GETEX&lt;&#x2F;h2&gt;
+&lt;p&gt;获取键 key 对应的取值，并可按需为该键设置过期时间。GETEX 命令与 GET 命令功能相近，区别在于它属于&lt;strong&gt;写命令&lt;&#x2F;strong&gt;，即使仅使用 GETEX key（不带任何选项），也会触发 Redis 对键的访问时间更新（影响 LRU 淘汰策略），且会同步到主从节点 &#x2F; AOF 日志。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yu-fa-1&quot;&gt;语法&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;GETEX&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; EX seconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; PX&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; milliseconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; EXAT&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; unix-time-seconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; PXAT&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; unix-time-milliseconds&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; PERSIST&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; ]&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;GETEX 命令支持一组可修改其行为的选项，具体如下：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;PERSIST —— 移除该键关联的生存时间（TTL），使其变为永久有效。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;yong-li-5&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET mykey &amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETEX mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; TTL mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; -1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETEX mykey EX&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 60&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; TTL mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 60&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;getdel&quot;&gt;GETDEL&lt;&#x2F;h2&gt;
+&lt;p&gt;获取键key的值并删除该键。此命令与GET命令功能相近，区别在于：执行成功时会同时删除该键（当且仅当该键的值类型为字符串类型时，才会执行删除操作）。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yu-fa-2&quot;&gt;语法&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;GETDEL&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;yong-li-6&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET mykey &amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETDEL mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;nil&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;getrange&quot;&gt;GETRANGE&lt;&#x2F;h2&gt;
+&lt;p&gt;返回存储在指定键&lt;code&gt;key&lt;&#x2F;code&gt;中的字符串值的子串，子串范围由偏移量 &lt;code&gt;start&lt;&#x2F;code&gt; 和 &lt;code&gt;end&lt;&#x2F;code&gt; 决定（两个偏移量对应的字符均包含在内）。可以使用负数偏移量，表示从字符串的末尾开始计算位置。例如，&lt;code&gt;-1&lt;&#x2F;code&gt; 代表最后一个字符，&lt;code&gt;-2&lt;&#x2F;code&gt; 代表倒数第二个字符，以此类推。该函数会通过将结果范围限制在字符串的实际长度内，来处理超出范围的请求。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yu-fa-3&quot;&gt;语法&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;GETRANGE&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key start end&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;shi-jian-fu-za-du&quot;&gt;时间复杂度&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;O(N)&lt;&#x2F;code&gt;，&lt;code&gt;N&lt;&#x2F;code&gt;是返回子串的大小，子串较小时可以近似认为是&lt;code&gt;O(1)&lt;&#x2F;code&gt;。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yong-li-7&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET mykey &amp;quot;This is a string&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETRANGE mykey&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 0 3&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;This&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETRANGE mykey&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-other z-option&quot;&gt; -3 -1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;ing&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETRANGE mykey&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 0&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-other z-option&quot;&gt; -1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;This is a string&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETRANGE mykey&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 10 100&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;string&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;# 右边界在左边界左边，返回空子串&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;localhost:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETRANGE mykey&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 5 0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;getset&quot;&gt;GETSET&lt;&#x2F;h2&gt;
+&lt;p&gt;以&lt;strong&gt;原子操作&lt;&#x2F;strong&gt;的方式将键 key 的值设为 value，并返回该键原本存储的值。若键已存在但存储的并非字符串类型，则返回错误。当 SET 命令执行成功时，该键原本关联的所有生存时间（TTL）都会被清除。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yu-fa-4&quot;&gt;语法&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;GETSET&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;# 等价于&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;SET&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value GET&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;yong-li-8&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;p&gt;GETSET 可与 INCR 配合使用，实现&lt;strong&gt;原子化重置&lt;&#x2F;strong&gt;的计数功能。例如：某进程可在每次有事件发生时，对键 mycounter 执行 INCR 命令（累加计数）；但我们需要不定期地原子性地获取计数器当前值，并将其重置为 0，这一操作可通过执行 GETSET mycounter “0” 实现。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; INCR mycounter&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GETSET mycounter &amp;quot;0&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;1&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET mycounter&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;0&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;mget&quot;&gt;MGET&lt;&#x2F;h2&gt;
+&lt;p&gt;返回所有指定键对应的值。对于非字符串类型或不存在的键，均返回特殊值 &lt;code&gt;nil&lt;&#x2F;code&gt;。正因如此，该操作永远不会执行失败。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;MGET&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key ... ]&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;yong-li-9&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET key1 &amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET key2 &amp;quot;World&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; MGET key1 key2 nonexisting&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;World&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;) (&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;nil&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;delifeq&quot;&gt;DELIFEQ&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Since: 9.0.0&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;DELIFEQ&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key value&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;仅当键的值与指定字符串完全匹配时，才删除该键。
+此命令通常用于分布式系统中安全释放锁，确保只有锁的持有者（通过值来标识）能够删除该锁。
+若键存在，且存储的字符串值与传入值完全一致，则删除该键并返回1；否则，键保持不变并返回0。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yong-li-10&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET mykey abc123&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; DELIFEQ mykey abc123&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; DELIFEQ mykey abc123&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;incr&quot;&gt;INCR&lt;&#x2F;h2&gt;
+&lt;p&gt;将存储在键 key 中的数字值自增 1。若该键不存在，则会先将其值设为 0，再执行自增操作。若键中存储的值类型错误（非字符串），或存储的字符串无法解析为整数，则返回错误。此操作仅支持&lt;strong&gt;64 位有符号整数&lt;&#x2F;strong&gt;。&lt;&#x2F;p&gt;
+&lt;p&gt;注意：这是一个字符串操作，因为 Valkey 并不具备专用的整数类型。执行此操作时，键中存储的字符串会被解析为10 进制的 64 位有符号整数。
+Valkey 会以整数的原生存储格式来保存整数值，因此对于那些实际存储整数的字符串值来说，并不会产生存储整数字符串表示形式的额外开销。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yong-li-11&quot;&gt;用例&lt;&#x2F;h3&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; SET mykey &amp;quot;10&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;OK&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; INCR mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;integer&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; 11&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;127.0.0.1:6379&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; GET mykey&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;&amp;quot;11&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;incrby&quot;&gt;INCRBY&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;INCRBY&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key increment&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;decr&quot;&gt;DECR&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;DECR&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;decrby&quot;&gt;DECRBY&lt;&#x2F;h2&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;DECRBY&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; key decrement&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        <summary type="html">Redis string can be anything!</summary>
+        </entry>
+</feed>

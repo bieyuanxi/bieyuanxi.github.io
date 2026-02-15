@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://bieyuanxi.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;bieyuanxi.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>拷贝赋值运算符</tabi:current_section>
+    </tabi:metadata><title>Terra's Blog - 拷贝赋值运算符</title>
+        <subtitle>YOUR_SITE_DESCRIPTION</subtitle>
+    <link href="https://bieyuanxi.github.io/tags/kao-bei-fu-zhi-yun-suan-fu/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://bieyuanxi.github.io/tags/kao-bei-fu-zhi-yun-suan-fu/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-12-01T00:00:00+00:00</updated><id>https://bieyuanxi.github.io/tags/kao-bei-fu-zhi-yun-suan-fu/atom.xml</id><entry xml:lang="en">
+        <title>C++：拷贝与移动</title>
+        <published>2025-12-01T00:00:00+00:00</published>
+        <updated>2025-12-01T00:00:00+00:00</updated>
+        <author>
+            <name>Terra</name>
+        </author>
+        <link rel="alternate" href="https://bieyuanxi.github.io/blog/cpp-copy-and-move/" type="text/html"/>
+        <id>https://bieyuanxi.github.io/blog/cpp-copy-and-move/</id>
+        
+            <content type="html">&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;cppreference.com&#x2F;w&#x2F;cpp&#x2F;language&#x2F;copy_constructor.html&quot;&gt;Cpp Reference&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;yi-qian-zhi-zhi-shi-zuo-zhi-vsyou-zhi&quot;&gt;一、前置知识：左值vs右值&lt;&#x2F;h1&gt;
+&lt;p&gt;理解移动语义的前提是区分左值（lvalue） 和右值（rvalue）：&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;左值：有名字、能取地址的对象（比如变量、函数返回的引用），可以出现在赋值号左边。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;示例：int a = 10; 中，a 是左值。&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;右值：没有名字、不能取地址的临时对象（比如字面量、函数返回的临时值），只能出现在赋值号右边。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;示例：10、a + b、string(“hello”) 都是右值。&lt;&#x2F;p&gt;
+&lt;p&gt;C++11 引入右值引用（&amp;amp;&amp;amp;），专门绑定右值，这是移动语义的基础。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;er-kao-bei-gou-zao-han-shu&quot;&gt;二、拷贝构造函数&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;strong&gt;拷贝构造函数&lt;&#x2F;strong&gt;（Copy Constructor）用一个已存在的对象&lt;strong&gt;深拷贝&lt;&#x2F;strong&gt;创建新对象（逐字节复制 + 资源重新分配），保证新对象和原对象独立，修改一个不会影响另一个。&lt;&#x2F;p&gt;
+&lt;p&gt;额…非常抽象的描述，先来看看拷贝构造函数能为我们带来什么便利吧。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 触发拷贝构造函数：&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 1. 用一个对象初始化新对象&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;MyClass c1;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;MyClass c2 = c1;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 写法1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;MyClass&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; c3&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;c1&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;     &#x2F;&#x2F; 写法2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; c1、c2、c3三个对象相互独立&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 2. 作为函数参数按值传递&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;嗯…似乎确实很方便。哎等等，我不定义拷贝构造函数不也一样能用吗？&lt;&#x2F;p&gt;
+&lt;p&gt;这是因为编译器有默认的拷贝构造函数实现，如果没有显式定义，编译器会“贴心的”替我们实现一个，即简单地拷贝原对象的值（浅拷贝）。这带来了一个问题：如果我们的对象里有一个指针，它指向了一块堆内存，默认的拷贝构造函数只会把指针拷贝到新对象中，这会出现两个不同的对象指向了同一块内存的情况，如果两个对象在析构函数内释放指向的内存，就会引发&lt;code&gt;double free&lt;&#x2F;code&gt;，嘶…好心办坏事了属于是。&lt;&#x2F;p&gt;
+&lt;p&gt;所以，在需要管理堆内存等外部资源的情况下，我们必须自己实现拷贝构造函数（或者禁止编译器自动生成）。常见的实现逻辑是深拷贝原对象。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;class&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; MyClass&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;public:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 拷贝构造函数：&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 参数必须是 const 左值引用（const T&amp;amp;），&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 保证不会修改原对象，并且允许不可变对象作为参数传入&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    MyClass&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt;const&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; MyClass&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; other&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 深拷贝逻辑：复制数据 + 重新分配资源（比如堆内存、文件句柄）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;};&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;默认拷贝构造函数的行为是逐成员浅拷贝。内置类型（&lt;code&gt;int&lt;&#x2F;code&gt;、&lt;code&gt;bool&lt;&#x2F;code&gt;）值拷贝完全安全；对指针 &#x2F; 引用成员拷贝指针 &#x2F; 引用本身（而非指向的资源）；对类成员则调用该成员的拷贝构造函数（比如 &lt;code&gt;std::string&lt;&#x2F;code&gt; 是深拷贝，安全；自定义资源类如果没写深拷贝，危险）。&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;san-yi-dong-gou-zao-han-shu&quot;&gt;三、移动构造函数&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;strong&gt;移动构造函数&lt;&#x2F;strong&gt;（Move Constructor）用一个右值对象&lt;strong&gt;浅拷贝&lt;&#x2F;strong&gt;创建新对象（“偷” 原对象的资源，而非重新分配），原对象会被置为 “空状态”（资源指针置空），避免不必要的拷贝，提升性能。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 触发移动构造函数：&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 用右值初始化新对象（比如临时对象、std::move 转换的左值）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;MyClass c1;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;MyClass c2 =&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-scope-resolution&quot;&gt; std&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(s1);&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 写法1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;MyClass&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; c3&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-scope-resolution&quot;&gt;std&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(s2));&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;     &#x2F;&#x2F; 写法2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; c1的资源已被转移给c2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;std::move()&lt;&#x2F;code&gt; 是一个编译期的类型转换工具，不执行任何运行时的内存移动或数据拷贝操作，核心作用是将左值强制转换为右值引用，从而触发移动语义。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;在容器操作中，例如向&lt;code&gt;vector&lt;&#x2F;code&gt;放入&lt;code&gt;string&lt;&#x2F;code&gt;，使用移动语义可以避免深拷贝对象。&lt;&#x2F;p&gt;
+&lt;p&gt;好吧，我承认移动语义确实很实用，那么该如何写移动构造函数呢？&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;class&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; MyClass&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;public:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 手动编写移动构造函数时，编译器不会自动实现拷贝构造函数&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 移动构造函数：参数是非 const 右值引用（T&amp;amp;&amp;amp;）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    MyClass&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;MyClass&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt; &amp;amp;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;other&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt; noexcept&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 移动逻辑：接管原对象资源 + 原对象置空&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;        println&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;MyClass::Move function called.&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;};&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：&lt;code&gt;noexcept&lt;&#x2F;code&gt; 是 C++11 引入的异常说明符，核心作用是:告诉编译器 &#x2F; 调用者，该函数不会抛出任何异常，编译器可基于这个承诺做性能优化。如果标记了 &lt;code&gt;noexcept&lt;&#x2F;code&gt; 的函数实际抛出异常，程序会直接调用 &lt;code&gt;std::terminate&lt;&#x2F;code&gt; 终止。&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;需要注意的是，在手动编写移动构造函数时，编译器不会自动实现拷贝构造函数。这是因为手动编写移动构造函数意味着我们需要实现资源转移，而资源转移通常都是深拷贝的，编译器默认实现的拷贝构造函数并不合适，因此没有自动生成。如果直接使用拷贝构造函数的语法，则会遇到下面的问题：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy assignment operator is implicitly deleted because ‘MyClass’ has a user-declared move constructor.&lt;&#x2F;li&gt;
+&lt;li&gt;Copy constructor is implicitly deleted because ‘MyClass’ has a user-declared move constructor.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;si-kao-bei-fu-zhi-yun-suan-fu-vs-yi-dong-fu-zhi-yun-suan-fu&quot;&gt;四、拷贝赋值运算符 vs 移动赋值运算符&lt;&#x2F;h1&gt;
+&lt;p&gt;构造函数是 “创建新对象”，赋值运算符是 “给已存在的对象赋值”。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;拷贝赋值运算符（Copy Assignment Operator）&lt;&#x2F;li&gt;
+&lt;li&gt;移动赋值运算符（Move Assignment Operator）&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;class&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; MyString&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;private:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    char&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;* data;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    int&lt;&#x2F;span&gt;&lt;span&gt; len;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;public:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 普通构造函数&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    MyString&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier z-storage z-type&quot;&gt;const char*&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; str&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;        len =&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; strlen&lt;&#x2F;span&gt;&lt;span&gt;(str);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;        data =&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-new&quot;&gt; new&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt; char&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[len +&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span&gt;];&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F; 分配堆内存&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;        strcpy&lt;&#x2F;span&gt;&lt;span&gt;(data, str);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 析构函数：释放资源&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    ~MyString&lt;&#x2F;span&gt;&lt;span&gt;() {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-delete&quot;&gt;        delete[]&lt;&#x2F;span&gt;&lt;span&gt; data;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 拷贝赋值运算符：返回值为引用（支持链式赋值）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;    MyString&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-other z-operator z-entity z-name z-operator&quot;&gt; operator=&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt;const&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; MyString&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; other&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 1. 防止自赋值（s = s）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        if&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language&quot;&gt;this&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; == &amp;amp;other)&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt; return&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language&quot;&gt;this&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 2. 释放当前对象的资源&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-delete&quot;&gt;        delete[]&lt;&#x2F;span&gt;&lt;span&gt; data;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 3. 深拷贝原对象的资源&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;        len =&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; other&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;        data =&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-new&quot;&gt; new&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt; char&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[len +&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span&gt;];&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;        strcpy&lt;&#x2F;span&gt;&lt;span&gt;(data,&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; other&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        return&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language&quot;&gt;this&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 移动赋值运算符：返回值为引用，参数为右值引用&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;    MyString&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-other z-operator z-entity z-name z-operator&quot;&gt; operator=&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;MyString&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt;&amp;amp;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; other&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier&quot;&gt; noexcept&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 1. 防止自赋值&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        if&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language&quot;&gt;this&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; == &amp;amp;other)&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt; return&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language&quot;&gt;this&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 2. 释放当前对象的资源&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-delete&quot;&gt;        delete[]&lt;&#x2F;span&gt;&lt;span&gt; data;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 3. 接管原对象的资源&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;        len =&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; other&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;len&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;        data =&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; other&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;data&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 4. 原对象置空&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;        other&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;len&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 0&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;        other&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;data&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-language&quot;&gt; nullptr&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        return&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language&quot;&gt;this&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;};&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 使用拷贝赋值运算符&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;MyString&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; s1&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;hello&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;MyString&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; s2&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;world&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;s2 = s1;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F; 调用拷贝赋值，s2 释放原有资源，深拷贝 s1 的资源&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 使用移动赋值运算符&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;MyString&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; s1&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;hello&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;MyString s2;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;s2 =&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-scope-resolution&quot;&gt; std&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;move&lt;&#x2F;span&gt;&lt;span&gt;(s1);&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F; 调用移动赋值，s2 接管 s1 的资源&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h1 id=&quot;keng&quot;&gt;坑！&lt;&#x2F;h1&gt;
+&lt;ol&gt;
+&lt;li&gt;如果没有手动定义，编译器会默认生成拷贝构造函数（浅拷贝）、拷贝赋值运算符（浅拷贝）。&lt;&#x2F;li&gt;
+&lt;li&gt;C++11 后，如果没有手动定义拷贝 &#x2F; 移动相关函数，编译器会默认生成移动构造 &#x2F; 移动赋值，但如果手动定义了拷贝构造 &#x2F; 拷贝赋值，默认移动函数会被禁用。&lt;&#x2F;li&gt;
+&lt;li&gt;如果手动定义了移动构造函数，编译器会禁止自动生成拷贝构造函数。The implicitly-declared copy constructor for class T is defined as deleted if T declares a move constructor or move assignment operator.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;gan-wu&quot;&gt;感悟&lt;&#x2F;h1&gt;
+&lt;p&gt;C++ 从 C 继承了 “值语义”（变量赋值 &#x2F; 传参就是复制数据），为了保持这种直觉式的行为，默认给所有类生成浅拷贝构造函数，如果编译器不默认生成拷贝构造，开发者需要为每个简单类手动写空的拷贝构造，这会导致大量冗余代码。在 C++11 引入移动语义前，“拷贝” 是对象复制的唯一方式。&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">拷贝是拷贝，移动是移动(晕😵</summary>
+        </entry>
+</feed>
