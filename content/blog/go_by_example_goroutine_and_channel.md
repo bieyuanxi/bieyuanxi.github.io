@@ -12,7 +12,9 @@ tags = ["golang", "goroutine", "WaitGroups", "channels", "sync"]
 - [gobyexample: goroutines](https://gobyexample.com/goroutines)
 - [gobyexample: channels](https://gobyexample.com/channels)
 - [gobyexample: channel-buffering](https://gobyexample.com/channel-buffering)
-
+- [gobyexample: channel-directions](https://gobyexample.com/channel-directions)
+- [gobyexample: channel-synchronization](https://gobyexample.com/channel-synchronization)
+- [gobyexample: waitgroups](https://gobyexample.com/waitgroups)
 
 
 
