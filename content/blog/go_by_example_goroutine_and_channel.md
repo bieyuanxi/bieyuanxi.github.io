@@ -13,7 +13,9 @@ tags = ["golang", "goroutine", "WaitGroups", "channels", "sync"]
 - [gobyexample: channels](https://gobyexample.com/channels)
 - [gobyexample: channel-buffering](https://gobyexample.com/channel-buffering)
 - [gobyexample: channel-directions](https://gobyexample.com/channel-directions)
+- [gobyexample: closing-channels](https://gobyexample.com/closing-channels)
 - [gobyexample: channel-synchronization](https://gobyexample.com/channel-synchronization)
+  - [gobyexample: range-over-channels](https://gobyexample.com/range-over-channels)
 - [gobyexample: waitgroups](https://gobyexample.com/waitgroups)
 
 
@@ -75,7 +77,7 @@ go consumer(ch)
 
 
 ## Buffered Channels
-默认情况下，通道是无缓冲的（`unbuffered`），这意味着只有当存在对应的接收操作（`<- chan`）已准备好接收发送的值时，通道才会接受发送操作（`chan <-`）。而有缓冲通道（`buffered channels`）则可以在没有对应接收方的情况下，接收有限数量的值。
+默认情况下，通道是无缓冲的（`unbuffered`），这意味着只有当存在对应的接收操作（`<- chan`）已准备好接收发送的值时，通道才会接受发送操作（`chan <-`）。而有缓冲通道（`buffered channels`）则可以在没有对应接收方的情况下，接收有限数量的值。即使通道已经被关闭，依然可以获取通道缓存的值。
 
 创建一个有缓冲通道很简单。例如下面创建了一个能缓冲2个值的通道。
 ```go
@@ -116,6 +118,63 @@ func main() {
     // 如果没有<-done，程序会在worker完成之前退出
 }
 ```
+
+
+## Closing Channels
+关闭一个通道意味着该通道上不再发送任何值。这可用于向通道的接收方传达完成信号。
+
+从一个已关闭的通道读取值会立刻返回，第一个返回值返回发送的值或零值，第二个可选参数负责区分读取的值是否有效，`true`表示有效，`false`表示无效。
+```go
+func main() {
+	jobs := make(chan int, 5)
+	done := make(chan bool)
+
+	go func() {
+		for {
+			// 返回值more表示接收到的值是否有效
+			j, more := <-jobs
+			if more {
+				fmt.Println("received job", j)
+			} else {
+				fmt.Println("received all jobs")
+				done <- true
+				return
+			}
+		}
+	}()
+
+	go func() {
+		for j := range 300 {
+			jobs <- j
+			fmt.Println("sent job", j)
+		}
+		close(jobs)
+		fmt.Println("sent all jobs")
+	}()
+
+	<-done
+  // 验证通道状态，应该已经关闭
+	_, ok := <-jobs
+	fmt.Println("received more jobs:", ok) // received more jobs: false
+}
+```
+
+
+## Range over Channels
+可以使用`range`从通道迭代值。当不可能再获取值时，循环将自动退出。
+```go
+func main() {
+    queue := make(chan string, 2)
+    queue <- "one"
+    queue <- "two"
+    close(queue)
+
+    for elem := range queue {
+        fmt.Println(elem)
+    }
+}
+```
+
 
 ## WaitGroups
 为了等待多个`goroutines`完成，可以使用`sync.WaitGroups`。
