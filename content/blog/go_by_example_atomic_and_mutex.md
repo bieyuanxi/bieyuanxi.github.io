@@ -85,92 +85,92 @@ func (c *Container) inc(name string) {
 package main
 
 import (
-	"fmt"
-	"math/rand/v2"
-	"sync"
-	"time"
+  "fmt"
+  "math/rand/v2"
+  "sync"
+  "time"
 )
 
 type ReadOp struct {
-	key  int
-	resp chan int // 将通道作为oneshot系统，用来发送&接收返回值
+  key  int
+  resp chan int // 将通道作为oneshot系统，用来发送&接收返回值
 }
 
 type WriteOp struct {
-	key  int
-	val  int
-	resp chan bool // 将通道作为oneshot系统，用来发送&接收返回值
+  key  int
+  val  int
+  resp chan bool // 将通道作为oneshot系统，用来发送&接收返回值
 }
 
 func main() {
-	reads := make(chan ReadOp, 5)
-	writes := make(chan WriteOp, 5)
-	quit := make(chan struct{}) // 不发送数据的通道，用通道开关表示是否退出
+  reads := make(chan ReadOp, 5)
+  writes := make(chan WriteOp, 5)
+  quit := make(chan struct{}) // 不发送数据的通道，用通道开关表示是否退出
 
-	var wg sync.WaitGroup
+  var wg sync.WaitGroup
 
-	go func() {
-		state := map[int]int{}
-		rcounter := 0
-		wcounter := 0
-		
-		// 如果使用下面这行，则永远输出的是0
-		// defer 语句在定义时就会立即计算并绑定所有参数的值，而不是在执行时
-		// defer fmt.Println("read_counter: ", rcounter, ", write_counter: ", wcounter)
-		
-		defer func() {
-			// 统计读写操作个数
-			fmt.Println("read_counter: ", rcounter, ", write_counter: ", wcounter)
-			close(quit)
-		}()
-		
-		for {
-			select {
-			case op := <-reads:
-				op.resp <- state[op.key]
-				rcounter += 1
+  go func() {
+    state := map[int]int{}
+    rcounter := 0
+    wcounter := 0
+    
+    // 如果使用下面这行，则永远输出的是0
+    // defer 语句在定义时就会立即计算并绑定所有参数的值，而不是在执行时
+    // defer fmt.Println("read_counter: ", rcounter, ", write_counter: ", wcounter)
+    
+    defer func() {
+      // 统计读写操作个数
+      fmt.Println("read_counter: ", rcounter, ", write_counter: ", wcounter)
+      close(quit)
+    }()
+    
+    for {
+      select {
+      case op := <-reads:
+        op.resp <- state[op.key]
+        rcounter += 1
 
-			case op := <-writes:
-				state[op.key] = op.val
-				op.resp <- true
-				wcounter += 1
+      case op := <-writes:
+        state[op.key] = op.val
+        op.resp <- true
+        wcounter += 1
 
-			case <-time.After(1 * time.Second):
-				return
-			}
-		}
+      case <-time.After(1 * time.Second):
+        return
+      }
+    }
 
-	}()
+  }()
 
-	for range 123 {
-		wg.Go(func() {
-			readOp := ReadOp{
-				key:  rand.IntN(5),
-				resp: make(chan int),
-			}
+  for range 123 {
+    wg.Go(func() {
+      readOp := ReadOp{
+        key:  rand.IntN(5),
+        resp: make(chan int),
+      }
 
-			reads <- readOp
-			<-readOp.resp
-		})
-	}
+      reads <- readOp
+      <-readOp.resp
+    })
+  }
 
-	for range 321 {
-		wg.Go(func() {
-			writeOp := WriteOp{
-				key:  rand.IntN(5),
-				val:  rand.IntN(100),
-				resp: make(chan bool),
-			}
+  for range 321 {
+    wg.Go(func() {
+      writeOp := WriteOp{
+        key:  rand.IntN(5),
+        val:  rand.IntN(100),
+        resp: make(chan bool),
+      }
 
-			writes <- writeOp
-			<-writeOp.resp
-		})
-	}
+      writes <- writeOp
+      <-writeOp.resp
+    })
+  }
 
-	
-	wg.Wait()
-	
-	<-quit
+  
+  wg.Wait()
+  
+  <-quit
 }
 
 ```
