@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://bieyuanxi.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;bieyuanxi.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>interface</tabi:current_section>
+    </tabi:metadata><title>Terra's Blog - interface</title>
+        <subtitle>YOUR_SITE_DESCRIPTION</subtitle>
+    <link href="https://bieyuanxi.github.io/tags/interface/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://bieyuanxi.github.io/tags/interface/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2026-02-15T00:00:00+00:00</updated><id>https://bieyuanxi.github.io/tags/interface/atom.xml</id><entry xml:lang="en">
+        <title>Go by Example: Interfaces</title>
+        <published>2026-02-15T00:00:00+00:00</published>
+        <updated>2026-02-15T00:00:00+00:00</updated>
+        <author>
+            <name>Terra</name>
+        </author>
+        <link rel="alternate" href="https://bieyuanxi.github.io/blog/go-by-example-interface/" type="text/html"/>
+        <id>https://bieyuanxi.github.io/blog/go-by-example-interface/</id>
+        
+            <content type="html">&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;gobyexample.com&#x2F;interfaces&quot;&gt;gobyexample: interfaces&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;research.swtch.com&#x2F;interfaces&quot;&gt;Go Data Structures: Interfaces&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;interfaces&quot;&gt;Interfaces&lt;&#x2F;h1&gt;
+&lt;p&gt;接口是方法签名的具名集合，用来实现鸭子类型，接口本身也是一个类型&lt;code&gt;interface{}&lt;&#x2F;code&gt;，&lt;code&gt;any&lt;&#x2F;code&gt;类型是其别名。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;go&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; &#x2F;usr&#x2F;lib&#x2F;go&#x2F;src&#x2F;builtin&#x2F;builtin.go&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;type&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; any&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt; interface&lt;&#x2F;span&gt;&lt;span&gt;{}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;若一个结构体实现了该接口的全部方法，则该结构体实现了接口。
+若该结构体存在指针实现的接口方法，则作为接口参数传入时必须传入引用，否则无法通过编译。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;go&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 定义接口&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;type&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; Geometry&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt; interface&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    area&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; 接口方法&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    perim&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    scale&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;factor&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 接口作为参数&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;func&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; measure&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;g&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; Geometry&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    fmt&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;Println&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;g&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    fmt&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;Println&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;g&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;area&lt;&#x2F;span&gt;&lt;span&gt;())&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    fmt&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;Println&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;g&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;perim&lt;&#x2F;span&gt;&lt;span&gt;())&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;type&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; Rect&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt; struct&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    width&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    height&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 实现接口对应方法&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;func&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;self &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Rect&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; area&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    return&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;height&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;width&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 实现接口对应方法&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;func&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;self &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Rect&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; perim&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    return&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 2&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;height&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; +&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 2&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;width&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 指针接收者实现接口方法&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;func&lt;&#x2F;span&gt;&lt;span&gt; (&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;self &lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;*&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Rect&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; scale&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;factor&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;height&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *=&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; factor&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    self&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;width&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *=&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; factor&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 判断接口传入的实际类型&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;func&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; detectCircle&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;g&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; Geometry&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    if&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; c&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; ok&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; :=&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; g&lt;&#x2F;span&gt;&lt;span&gt;.(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Rect&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; ok&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;        fmt&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;Println&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;Rect with radius&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; c&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;radius&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;func&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; main&lt;&#x2F;span&gt;&lt;span&gt;() {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    rect&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; :=&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; Rect&lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;:&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 10&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; height&lt;&#x2F;span&gt;&lt;span&gt;:&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 20&lt;&#x2F;span&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; detectCircle(rect) &#x2F;&#x2F; 报错！存在接口方法由指针接收者实现&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;    detectCircle&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;rect&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;   &#x2F;&#x2F; 正常&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;接口类型也可以作为参数。&lt;code&gt;switch&lt;&#x2F;code&gt;也可以将类型作为参数。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;go&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;func&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; test_interface&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;any&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt; interface&lt;&#x2F;span&gt;&lt;span&gt;{})&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; float64&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    if&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; v&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; ok&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; :=&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; any&lt;&#x2F;span&gt;&lt;span&gt;.(&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Geometry&lt;&#x2F;span&gt;&lt;span&gt;);&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; ok&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        return&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; v&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;area&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    switch&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; v&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; :=&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; any&lt;&#x2F;span&gt;&lt;span&gt;.(&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt;type&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    case&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-numeric z-go&quot;&gt; int&lt;&#x2F;span&gt;&lt;span&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        return&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 0.0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    case&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt; float&lt;&#x2F;span&gt;&lt;span&gt;:&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        return&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 0.0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h1 id=&quot;di-ceng-shi-xian&quot;&gt;底层实现&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;code&gt;interface{}&lt;&#x2F;code&gt;元数据包含&lt;code&gt;itable&lt;&#x2F;code&gt;指针和&lt;code&gt;data&lt;&#x2F;code&gt;指针，占用16B（x64）。&lt;code&gt;itable&lt;&#x2F;code&gt;指针指向一段堆内存，存储实际类型和所有接口方法的地址。&lt;code&gt;data&lt;&#x2F;code&gt;指针指向一段堆内存，存储实际类型的元数据。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;go&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;iface&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; :=&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; Geometry&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;rect&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;fmt&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;Println&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;&amp;quot;size of interface: &amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; unsafe&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;Sizeof&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;iface&lt;&#x2F;span&gt;&lt;span&gt;))&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; size of interface:  16&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+
+&lt;noscript&gt;
+    &lt;strong&gt;⚠️ JavaScript is required to render the diagram.&lt;&#x2F;strong&gt;
+&lt;&#x2F;noscript&gt;
+&lt;pre class=&quot;mermaid invertible-image&quot;&gt;
+    graph TD
+    %% 接口变量层
+    subgraph InterfaceValue [&quot;Interface Value (16 bytes)&quot;]
+        direction LR
+        A[&quot;itable: 8 bytes&quot;]
+        B[&quot;data: 8 bytes&quot;]
+    end
+
+    %% itable层
+    subgraph Itable [&quot;runtime.itable&quot;]
+        direction LR
+        A1[&quot;typ: *runtime._type&quot;]
+        A2[&quot;fun[0]: func ptr&quot;]
+        A3[&quot;fun[1]: func ptr&quot;]
+    end
+
+    %% 类型信息层
+    subgraph TypeInfo [&quot;runtime._type (T&#x27;s type info)&quot;]
+        direction LR
+        TI1[&quot;name: T&quot;]
+        TI2[&quot;size: XX bytes&quot;]
+        TI3[&quot;kind: ptr&#x2F;struct&quot;]
+    end
+
+    %% 具体值层
+    subgraph ConcreteValue [&quot;Concrete Value (*T)&quot;]
+        direction LR
+        C1[&quot;Pointer to T instance&quot;]
+    end
+
+    %% 结构体实例层
+    subgraph TInstance [&quot;T struct instance&quot;]
+        direction LR
+        TI[&quot;Field1: value1&quot;]
+        TII[&quot;Field2: value2&quot;]
+    end
+
+    %% 连线
+    A --&gt; Itable
+    B --&gt; ConcreteValue
+    A1 --&gt; TypeInfo
+    C1 --&gt; TInstance
+    A2 --&gt; M1[&quot;(*T).Method1()&quot;]
+    A3 --&gt; M2[&quot;(*T).Method2()&quot;]
+
+    %% 简化样式
+    classDef core fill:#f0f8ff,stroke:#20b2aa,stroke-width:1px;
+    class InterfaceValue,Itable,ConcreteValue core;
+&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;golang&lt;&#x2F;code&gt;在编译器会优化内存占用，例如接口无方法时不额外分配堆内存，仅仅保存实际类型；数据类型小于等于指针大小时直接存储其值。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;itable&lt;&#x2F;code&gt;表是在运行时动态查询和缓存的，通过编译时预先排序，运行时只需要&lt;code&gt;O(m + n)&lt;&#x2F;code&gt;的复杂度，其中m是接口的方法个数，n是实际类型的方法个数。&lt;&#x2F;p&gt;
+</content>
+        </entry>
+</feed>

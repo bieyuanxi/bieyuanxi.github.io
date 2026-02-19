@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://bieyuanxi.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;bieyuanxi.github.io</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>串</tabi:current_section>
+    </tabi:metadata><title>Terra's Blog - 串</title>
+        <subtitle>YOUR_SITE_DESCRIPTION</subtitle>
+    <link href="https://bieyuanxi.github.io/tags/chuan/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://bieyuanxi.github.io/tags/chuan/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2023-11-14T00:00:00+00:00</updated><id>https://bieyuanxi.github.io/tags/chuan/atom.xml</id><entry xml:lang="en">
+        <title>串</title>
+        <published>2023-11-14T00:00:00+00:00</published>
+        <updated>2023-11-14T00:00:00+00:00</updated>
+        <author>
+            <name>Terra</name>
+        </author>
+        <link rel="alternate" href="https://bieyuanxi.github.io/blog/string/" type="text/html"/>
+        <id>https://bieyuanxi.github.io/blog/string/</id>
+        
+            <content type="html">&lt;h1 id=&quot;chuan-de-biao-shi&quot;&gt;串的表示&lt;&#x2F;h1&gt;
+&lt;ol&gt;
+&lt;li&gt;定长顺序存储：用一组地址连续的存储单元存储串值的字符序列，但是长度静态分配。&lt;&#x2F;li&gt;
+&lt;li&gt;堆分配存储：用一组地址连续的存储单元存储串值字符序列，其存储空间在程序执行过程中&lt;strong&gt;动态分配&lt;&#x2F;strong&gt;。&lt;&#x2F;li&gt;
+&lt;li&gt;块链存储表示：用链表方式存储串值。&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;ding-chang-shun-xu-cun-chu-biao-shi&quot;&gt;定长顺序存储表示&lt;&#x2F;h2&gt;
+&lt;p&gt;按照预定义的大小，为串分配一个固定长度的存储区。&lt;&#x2F;p&gt;
+&lt;p&gt;超过预定义长度的串值将被舍去，即“截断”。&lt;&#x2F;p&gt;
+&lt;p&gt;对串长有2种表示方法：在下标0处存串长；在结尾处加入一个不计入串长的结束标记字符，如‘\0’。&lt;&#x2F;p&gt;
+&lt;p&gt;实现串操作主要为&lt;strong&gt;字符序列的复制&lt;&#x2F;strong&gt;，时间复杂度基于复制的字符长度。操作时超过上限时约定用截尾法处理。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;c&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;#define&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-preprocessor&quot;&gt; MAXSTRLEN&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 255&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-storage z-type&quot;&gt;typedef unsigned char&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; SString&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[MAXSTRLEN +&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span&gt;];&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;kuai-lian-cun-chu-biao-shi&quot;&gt;块链存储表示&lt;&#x2F;h2&gt;
+&lt;p&gt;链表存储：存在结点大小的问题：每个结点可以存放1个字符或多个字符(所有结点大小相同)。链表最后一个结点不一定全满，可以用‘#’或非串值字符填充标记。&lt;&#x2F;p&gt;
+&lt;p&gt;对于联结操作（联结时需要处理串尾的无效字符，如何处理？TODO）等有一定方便之处，但占用存储量大且操作复杂，总体不如另外两种存储结构灵活。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;c&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;#define&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-preprocessor&quot;&gt; CHUNKSIZE&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-other z-unit z-constant z-numeric&quot;&gt; 0x40&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-storage z-type&quot;&gt;typedef struct&lt;&#x2F;span&gt;&lt;span&gt; Chunk {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    char&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; ch&lt;&#x2F;span&gt;&lt;span&gt;[CHUNKSIZE];&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    struct&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; Chunk *next;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;} Chunk;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;typedef&lt;&#x2F;span&gt;&lt;span&gt; stuct {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;    Chunk *head;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;    Chunk *tail;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F;串尾结点指针，便于联结操作&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    int&lt;&#x2F;span&gt;&lt;span&gt; curlen;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;} LString;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h3 id=&quot;cun-chu-mi-du&quot;&gt;存储密度&lt;&#x2F;h3&gt;
+&lt;p&gt;链式存储方式中，结点大小的选择直接影响串处理的效率。串的字符集的大小也是一个重要因素。&lt;&#x2F;p&gt;
+&lt;p&gt;字符集小，字符的机内编码就短。&lt;&#x2F;p&gt;
+&lt;p&gt;存储密度=串值所占的存储位&#x2F;实际分配的存储位&lt;&#x2F;p&gt;
+&lt;p&gt;存储密度小（结点小），运算处理方便，但存储占用大。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dui-fen-pei-cun-chu-biao-shi&quot;&gt;堆分配存储表示&lt;&#x2F;h2&gt;
+&lt;p&gt;既有顺序存储结构的特点，对串长又没有任何限制。&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;c&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-storage z-type&quot;&gt;typedef struct&lt;&#x2F;span&gt;&lt;span&gt; {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    char&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *ch;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;   &#x2F;&#x2F;若是非空串，按串长length分配存储区，否则ch为NULL&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    int&lt;&#x2F;span&gt;&lt;span&gt; length;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F;串长&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;} HString;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;chuan-de-mo-shi-pi-pei-suan-fa&quot;&gt;串的模式匹配算法&lt;&#x2F;h2&gt;
+&lt;p&gt;子串的定位操作通常称作串的模式匹配。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bf&quot;&gt;BF&lt;&#x2F;h3&gt;
+&lt;p&gt;O(m*n)&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kmp-todo&quot;&gt;KMP TODO&lt;&#x2F;h3&gt;
+&lt;p&gt;O(m+n)&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;c&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; next_arr表示模式串前index+1个元素组成的子串的前后缀相同的长度&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;void&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; get_next_arr&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;char&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;pattern&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt; int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; *&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;next_arr&lt;&#x2F;span&gt;&lt;span&gt;) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;    int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; len =&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt; strlen&lt;&#x2F;span&gt;&lt;span&gt;(pattern);&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;    next_arr&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt;0&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;] =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 0&lt;&#x2F;span&gt;&lt;span&gt;;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;    for&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type&quot;&gt;int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; i =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;, j =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 0&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;; i &amp;lt; len; ++i) {&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        while&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;(j &amp;amp;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; pattern&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[i] !=&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; pattern&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[j]) j =&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; next_array&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[j -&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span&gt;];&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword z-control&quot;&gt;        if&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt;pattern&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[i] ==&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable&quot;&gt; pattern&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[j]) j++;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-variable&quot;&gt;        next_arr&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;[i] = j;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;chuan-cao-zuo-ju-li&quot;&gt;串操作举例&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;文本编辑&lt;&#x2F;li&gt;
+&lt;li&gt;建立词索引表&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        </entry>
+</feed>

@@ -1,0 +1,112 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta content="default-src 'self';font-src 'self' data: 'self';img-src 'self' https://* data:;media-src 'self';style-src 'self' 'unsafe-inline';frame-src player.vimeo.com https://www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'" http-equiv=Content-Security-Policy><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://bieyuanxi.github.io name=base><title>
+Terra's Blog • Go by Example: Interfaces</title><link title="Terra's Blog - Atom Feed" href=https://bieyuanxi.github.io/atom.xml rel=alternate type=application/atom+xml><link href="https://bieyuanxi.github.io/custom_subset.css?h=0b9535a28bc3d5bf2321" rel=stylesheet><link href="https://bieyuanxi.github.io/main.css?h=045c365e19a4d50a64bb" rel=stylesheet><meta content="light dark" name=color-scheme><meta content=YOUR_SITE_DESCRIPTION name=description><meta content=YOUR_SITE_DESCRIPTION property=og:description><meta content="Go by Example: Interfaces" property=og:title><meta content=article property=og:type><meta content=en_GB property=og:locale><meta content=https://bieyuanxi.github.io/blog/go-by-example-interface/ property=og:url><meta content="Terra's Blog" property=og:site_name><noscript><link href=https://bieyuanxi.github.io/no_js.css rel=stylesheet></noscript><script src=https://bieyuanxi.github.io/js/initializeTheme.min.js></script><script defer src=https://bieyuanxi.github.io/js/themeSwitcher.min.js></script><script src="https://bieyuanxi.github.io/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e" defer></script><body><a href=#main-content id=skip-link>Skip to content</a><header><nav class=navbar><div class=nav-title><a class=home-title href=https://bieyuanxi.github.io/>Terra's Blog</a></div><div class=nav-navs><ul><li><a class="nav-links no-hover-padding" href=https://bieyuanxi.github.io/blog/>blog </a><li><a class="nav-links no-hover-padding" href=https://bieyuanxi.github.io/archive/>archive </a><li><a class="nav-links no-hover-padding" href=https://bieyuanxi.github.io/tags/>tags </a><li><a class="nav-links no-hover-padding" href=https://bieyuanxi.github.io/projects/>projects </a><li class=menu-icons-container><ul class=menu-icons-group><li class="js menu-icon"><div aria-label="Click or press $SHORTCUT to open search" class="search-icon interactive-icon" title="Click or press $SHORTCUT to open search" id=search-button role=button tabindex=0><svg viewbox="0 -960 960 960" xmlns=http://www.w3.org/2000/svg><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></div><li class="theme-switcher-wrapper js"><div aria-label="Toggle dark mode" title="Toggle dark/light mode" aria-pressed=false class=theme-switcher role=button tabindex=0></div><div aria-label="Reset mode to default" class="theme-resetter arrow" title="Reset mode to default" aria-hidden=true role=button tabindex=0></div></ul></ul></div></nav></header><div class=content id=main-content><main><article class=h-entry><h1 class="p-name article-title">Go by Example: Interfaces</h1><a class="u-url u-uid" href=https://bieyuanxi.github.io/blog/go-by-example-interface/></a><ul class=meta><span class="hidden p-author h-card"> <a class=u-url href=https://bieyuanxi.github.io rel=author title=Terra>Terra</a> </span><li><time class=dt-published datetime=2026-02-15>15th Feb 2026</time><li title="472 words"><span aria-hidden=true class=separator>•</span>3 min read<li class=tag><span aria-hidden=true class=separator>•</span>Tags: <li class=tag><a class=p-category href=https://bieyuanxi.github.io/tags/golang/>golang</a>, <li class=tag><a class=p-category href=https://bieyuanxi.github.io/tags/interface/>interface</a></ul><section class="e-content body"><h1 id=can-kao-zi-liao>参考资料</h1><ul><li><a href=https://gobyexample.com/interfaces rel=external>gobyexample: interfaces</a><li><a href=https://research.swtch.com/interfaces rel=external>Go Data Structures: Interfaces</a></ul><h1 id=interfaces>Interfaces</h1><p>接口是方法签名的具名集合，用来实现鸭子类型，接口本身也是一个类型<code>interface{}</code>，<code>any</code>类型是其别名。<pre class="giallo z-code"><code data-lang=go><span class=giallo-l><span class=z-comment>// /usr/lib/go/src/builtin/builtin.go</span></span>
+<span class=giallo-l><span class=z-keyword>type</span><span class="z-entity z-name z-type"> any</span><span class="z-keyword z-operator"> =</span><span class=z-keyword> interface</span><span>{}</span></span></code></pre><p>若一个结构体实现了该接口的全部方法，则该结构体实现了接口。 若该结构体存在指针实现的接口方法，则作为接口参数传入时必须传入引用，否则无法通过编译。<pre class="giallo z-code"><code data-lang=go><span class=giallo-l><span class=z-comment>// 定义接口</span></span>
+<span class=giallo-l><span class=z-keyword>type</span><span class="z-entity z-name z-type"> Geometry</span><span class=z-keyword> interface</span><span> {</span></span>
+<span class=giallo-l><span class="z-entity z-name z-function">    area</span><span>()</span><span class="z-storage z-type z-numeric z-go"> float64</span><span class=z-comment>    // 接口方法</span></span>
+<span class=giallo-l><span class="z-entity z-name z-function">    perim</span><span>()</span><span class="z-storage z-type z-numeric z-go"> float64</span></span>
+<span class=giallo-l><span class="z-entity z-name z-function">    scale</span><span>(</span><span class=z-variable>factor</span><span class="z-storage z-type z-numeric z-go"> float64</span><span>)</span></span>
+<span class=giallo-l><span>}</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span class=z-comment>// 接口作为参数</span></span>
+<span class=giallo-l><span class=z-keyword>func</span><span class="z-entity z-name z-function"> measure</span><span>(</span><span class=z-variable>g</span><span class="z-entity z-name z-type"> Geometry</span><span>) {</span></span>
+<span class=giallo-l><span class=z-variable>    fmt</span><span>.</span><span class="z-entity z-name z-function">Println</span><span>(</span><span class=z-variable>g</span><span>)</span></span>
+<span class=giallo-l><span class=z-variable>    fmt</span><span>.</span><span class="z-entity z-name z-function">Println</span><span>(</span><span class=z-variable>g</span><span>.</span><span class="z-entity z-name z-function">area</span><span>())</span></span>
+<span class=giallo-l><span class=z-variable>    fmt</span><span>.</span><span class="z-entity z-name z-function">Println</span><span>(</span><span class=z-variable>g</span><span>.</span><span class="z-entity z-name z-function">perim</span><span>())</span></span>
+<span class=giallo-l><span>}</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span class=z-keyword>type</span><span class="z-entity z-name z-type"> Rect</span><span class=z-keyword> struct</span><span> {</span></span>
+<span class=giallo-l><span class=z-variable>    width</span><span class="z-storage z-type z-numeric z-go"> float64</span></span>
+<span class=giallo-l><span class=z-variable>    height</span><span class="z-storage z-type z-numeric z-go"> float64</span></span>
+<span class=giallo-l><span>}</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span class=z-comment>// 实现接口对应方法</span></span>
+<span class=giallo-l><span class=z-keyword>func</span><span> (</span><span class=z-variable>self </span><span class="z-entity z-name z-type">Rect</span><span>)</span><span class="z-entity z-name z-function"> area</span><span>()</span><span class="z-storage z-type z-numeric z-go"> float64</span><span> {</span></span>
+<span class=giallo-l><span class="z-keyword z-control">    return</span><span class=z-variable> self</span><span>.</span><span class=z-variable>height</span><span class="z-keyword z-operator"> *</span><span class=z-variable> self</span><span>.</span><span class=z-variable>width</span></span>
+<span class=giallo-l><span>}</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span class=z-comment>// 实现接口对应方法</span></span>
+<span class=giallo-l><span class=z-keyword>func</span><span> (</span><span class=z-variable>self </span><span class="z-entity z-name z-type">Rect</span><span>)</span><span class="z-entity z-name z-function"> perim</span><span>()</span><span class="z-storage z-type z-numeric z-go"> float64</span><span> {</span></span>
+<span class=giallo-l><span class="z-keyword z-control">    return</span><span class="z-constant z-numeric"> 2</span><span class="z-keyword z-operator"> *</span><span class=z-variable> self</span><span>.</span><span class=z-variable>height</span><span class="z-keyword z-operator"> +</span><span class="z-constant z-numeric"> 2</span><span class="z-keyword z-operator"> *</span><span class=z-variable> self</span><span>.</span><span class=z-variable>width</span></span>
+<span class=giallo-l><span>}</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span class=z-comment>// 指针接收者实现接口方法</span></span>
+<span class=giallo-l><span class=z-keyword>func</span><span> (</span><span class=z-variable>self </span><span class="z-keyword z-operator">*</span><span class="z-entity z-name z-type">Rect</span><span>)</span><span class="z-entity z-name z-function"> scale</span><span>(</span><span class=z-variable>factor</span><span class="z-storage z-type z-numeric z-go"> float64</span><span>) {</span></span>
+<span class=giallo-l><span class=z-variable>    self</span><span>.</span><span class=z-variable>height</span><span class="z-keyword z-operator"> *=</span><span class=z-variable> factor</span></span>
+<span class=giallo-l><span class=z-variable>    self</span><span>.</span><span class=z-variable>width</span><span class="z-keyword z-operator"> *=</span><span class=z-variable> factor</span></span>
+<span class=giallo-l><span>}</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span class=z-comment>// 判断接口传入的实际类型</span></span>
+<span class=giallo-l><span class=z-keyword>func</span><span class="z-entity z-name z-function"> detectCircle</span><span>(</span><span class=z-variable>g</span><span class="z-entity z-name z-type"> Geometry</span><span>) {</span></span>
+<span class=giallo-l><span class="z-keyword z-control">    if</span><span class=z-variable> c</span><span>,</span><span class=z-variable> ok</span><span class="z-keyword z-operator"> :=</span><span class=z-variable> g</span><span>.(</span><span class="z-entity z-name z-type">Rect</span><span>);</span><span class=z-variable> ok</span><span> {</span></span>
+<span class=giallo-l><span class=z-variable>        fmt</span><span>.</span><span class="z-entity z-name z-function">Println</span><span>(</span><span class=z-string>"Rect with radius"</span><span>,</span><span class=z-variable> c</span><span>.</span><span class=z-variable>radius</span><span>)</span></span>
+<span class=giallo-l><span>    }</span></span>
+<span class=giallo-l><span>}</span></span>
+<span class=giallo-l></span>
+<span class=giallo-l></span>
+<span class=giallo-l><span class=z-keyword>func</span><span class="z-entity z-name z-function"> main</span><span>() {</span></span>
+<span class=giallo-l><span class=z-variable>    rect</span><span class="z-keyword z-operator"> :=</span><span class="z-entity z-name z-type"> Rect</span><span>{</span><span class=z-variable>width</span><span>:</span><span class="z-constant z-numeric"> 10</span><span>,</span><span class=z-variable> height</span><span>:</span><span class="z-constant z-numeric"> 20</span><span>}</span></span>
+<span class=giallo-l><span class=z-comment>    // detectCircle(rect) // 报错！存在接口方法由指针接收者实现</span></span>
+<span class=giallo-l><span class="z-entity z-name z-function">    detectCircle</span><span class="z-keyword z-operator">(&</span><span class=z-variable>rect</span><span>)</span><span class=z-comment>   // 正常</span></span>
+<span class=giallo-l><span>}</span></span></code></pre><p>接口类型也可以作为参数。<code>switch</code>也可以将类型作为参数。<pre class="giallo z-code"><code data-lang=go><span class=giallo-l><span class=z-keyword>func</span><span class="z-entity z-name z-function"> test_interface</span><span>(</span><span class="z-entity z-name z-type">any</span><span class=z-keyword> interface</span><span>{})</span><span class="z-storage z-type z-numeric z-go"> float64</span><span> {</span></span>
+<span class=giallo-l><span class="z-keyword z-control">    if</span><span class=z-variable> v</span><span>,</span><span class=z-variable> ok</span><span class="z-keyword z-operator"> :=</span><span class="z-entity z-name z-type"> any</span><span>.(</span><span class="z-entity z-name z-type">Geometry</span><span>);</span><span class=z-variable> ok</span><span> {</span></span>
+<span class=giallo-l><span class="z-keyword z-control">        return</span><span class=z-variable> v</span><span>.</span><span class="z-entity z-name z-function">area</span><span>()</span></span>
+<span class=giallo-l><span>    }</span></span>
+<span class=giallo-l><span>    </span></span>
+<span class=giallo-l><span class="z-keyword z-control">    switch</span><span class=z-variable> v</span><span class="z-keyword z-operator"> :=</span><span class="z-entity z-name z-type"> any</span><span>.(</span><span class=z-keyword>type</span><span>) {</span></span>
+<span class=giallo-l><span class="z-keyword z-control">    case</span><span class="z-storage z-type z-numeric z-go"> int</span><span>:</span></span>
+<span class=giallo-l><span class="z-keyword z-control">        return</span><span class="z-constant z-numeric"> 0.0</span></span>
+<span class=giallo-l><span class="z-keyword z-control">    case</span><span class="z-entity z-name z-type"> float</span><span>:</span></span>
+<span class=giallo-l><span class="z-keyword z-control">        return</span><span class="z-constant z-numeric"> 0.0</span></span>
+<span class=giallo-l><span>    }</span></span>
+<span class=giallo-l><span>}</span></span></code></pre><h1 id=di-ceng-shi-xian>底层实现</h1><p><code>interface{}</code>元数据包含<code>itable</code>指针和<code>data</code>指针，占用16B（x64）。<code>itable</code>指针指向一段堆内存，存储实际类型和所有接口方法的地址。<code>data</code>指针指向一段堆内存，存储实际类型的元数据。<pre class="giallo z-code"><code data-lang=go><span class=giallo-l><span class=z-variable>iface</span><span class="z-keyword z-operator"> :=</span><span class="z-entity z-name z-function"> Geometry</span><span class="z-keyword z-operator">(&</span><span class=z-variable>rect</span><span>)</span></span>
+<span class=giallo-l><span class=z-variable>fmt</span><span>.</span><span class="z-entity z-name z-function">Println</span><span>(</span><span class=z-string>"size of interface: "</span><span>,</span><span class=z-variable> unsafe</span><span>.</span><span class="z-entity z-name z-function">Sizeof</span><span>(</span><span class=z-variable>iface</span><span>))</span></span>
+<span class=giallo-l><span class=z-comment>// size of interface:  16</span></span></code></pre><noscript><strong>⚠️ JavaScript is required to render the diagram.</strong></noscript><pre class="mermaid invertible-image">
+    graph TD
+    %% 接口变量层
+    subgraph InterfaceValue ["Interface Value (16 bytes)"]
+        direction LR
+        A["itable: 8 bytes"]
+        B["data: 8 bytes"]
+    end
+
+    %% itable层
+    subgraph Itable ["runtime.itable"]
+        direction LR
+        A1["typ: *runtime._type"]
+        A2["fun[0]: func ptr"]
+        A3["fun[1]: func ptr"]
+    end
+
+    %% 类型信息层
+    subgraph TypeInfo ["runtime._type (T's type info)"]
+        direction LR
+        TI1["name: T"]
+        TI2["size: XX bytes"]
+        TI3["kind: ptr/struct"]
+    end
+
+    %% 具体值层
+    subgraph ConcreteValue ["Concrete Value (*T)"]
+        direction LR
+        C1["Pointer to T instance"]
+    end
+
+    %% 结构体实例层
+    subgraph TInstance ["T struct instance"]
+        direction LR
+        TI["Field1: value1"]
+        TII["Field2: value2"]
+    end
+
+    %% 连线
+    A --> Itable
+    B --> ConcreteValue
+    A1 --> TypeInfo
+    C1 --> TInstance
+    A2 --> M1["(*T).Method1()"]
+    A3 --> M2["(*T).Method2()"]
+
+    %% 简化样式
+    classDef core fill:#f0f8ff,stroke:#20b2aa,stroke-width:1px;
+    class InterfaceValue,Itable,ConcreteValue core;
+</pre><p><code>golang</code>在编译器会优化内存占用，例如接口无方法时不额外分配堆内存，仅仅保存实际类型；数据类型小于等于指针大小时直接存储其值。<p><code>itable</code>表是在运行时动态查询和缓存的，通过编译时预先排序，运行时只需要<code>O(m + n)</code>的复杂度，其中m是接口的方法个数，n是实际类型的方法个数。</section></article></main><div id=button-container><div id=toc-floating-container><input class=toggle id=toc-toggle type=checkbox><label title="Toggle Table of Contents" class=button for=toc-toggle id=toc-button><svg viewbox="0 -960 960 960" xmlns=http://www.w3.org/2000/svg><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg></label><div class=toc-content><div class=toc-container><ul><li><a href=https://bieyuanxi.github.io/blog/go-by-example-interface/#can-kao-zi-liao>参考资料</a><li><a href=https://bieyuanxi.github.io/blog/go-by-example-interface/#interfaces>Interfaces</a><li><a href=https://bieyuanxi.github.io/blog/go-by-example-interface/#di-ceng-shi-xian>底层实现</a></ul></div></div></div><a title="Go to the top of the page" class=no-hover-padding href=# id=top-button> <svg viewbox="0 0 20 20" fill=currentColor><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg> </a></div><script defer src=https://bieyuanxi.github.io/js/mermaid.min.js></script><span class=hidden id=copy-success> Copied! </span><span class=hidden id=copy-init> Copy code to clipboard </span><script defer src=https://bieyuanxi.github.io/js/copyCodeToClipboard.min.js></script></div><footer><section><nav class="socials nav-navs"><ul><li><a class="nav-links no-hover-padding social" href=https://bieyuanxi.github.io/atom.xml> <img alt=feed loading=lazy src=https://bieyuanxi.github.io/social_icons/rss.svg title=feed> </a></ul></nav><nav class=nav-navs></nav><div class=credits><small> Powered by <a href=https://www.getzola.org>Zola</a> & <a href=https://github.com/welpo/tabi>tabi</a> </small></div></section><div class="search-modal js" aria-labelledby=modalTitle id=searchModal role=dialog><h1 class=visually-hidden id=modalTitle>Search</h1><div id=modal-content><div id=searchBar><div aria-hidden=true class=search-icon><svg viewbox="0 -960 960 960" xmlns=http://www.w3.org/2000/svg><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg></div><input aria-controls=results-container aria-expanded=false autocomplete=off id=searchInput placeholder=Search… role=combobox spellcheck=false><div class="close-icon interactive-icon" title="Clear search" id=clear-search role=button tabindex=0><svg viewbox="0 -960 960 960" xmlns=http://www.w3.org/2000/svg><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></div></div><div id=results-container><div id=results-info><span id=zero_results> No results</span><span id=one_results> $NUMBER result</span><span id=many_results> $NUMBER results</span><span id=two_results> $NUMBER results</span><span id=few_results> $NUMBER results</span></div><div id=results role=listbox></div></div></div></div></footer>
