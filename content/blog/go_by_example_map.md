@@ -14,8 +14,8 @@ tags = ["golang", "hashmap", "map"]
 Golang中的`map[key-type]val-type`类型语义上是一个指针，大小等于操作系统指针的大小，因此其[`零值`](https://go.dev/ref/spec#The_zero_value)为`nil`。因此使用`new`创建`map`是没有意义的。可以使用如下代码验证：
 ```go
 import (
-	"fmt"
-	"unsafe"
+    "fmt"
+    "unsafe"
 )
 
 mapSize := unsafe.Sizeof(m)
@@ -33,7 +33,7 @@ m := make(map[K]V, capacity)
 
 // syntax 2
 n := map[string]int{}
-n := map[string]int{"foo": 1, "bar": 2}	// 初始化有2个键-值对
+n := map[string]int{"foo": 1, "bar": 2}    // 初始化有2个键-值对
 ``` 
 
 > `make`是 `Go` 语言的内置函数，专门用于创建切片（`slice`）、映射（`map`）和通道（`channel`）这三种引用类型。

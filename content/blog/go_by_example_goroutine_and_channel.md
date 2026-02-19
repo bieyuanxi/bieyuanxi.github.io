@@ -25,13 +25,13 @@ tags = ["golang", "goroutine", "WaitGroups", "channels", "sync"]
 
 ```go
 func fn(param string) {
-	// ...
+    // ...
 }
 
-go fn("goroutine")	// 立刻运行
+go fn("goroutine")    // 立刻运行
 
-go func(p1 int) {		// 立刻运行匿名函数
-	// ...
+go func(p1 int) {        // 立刻运行匿名函数
+    // ...
 }(100)
 ```
 
@@ -60,13 +60,13 @@ fmt.Println(msg)
 ```go
 // 只读
 func consumer(ch <-chan int) {
-	val := <-ch
-	fmt.Println("read:", val)
+    val := <-ch
+    fmt.Println("read:", val)
 }
 
 // 只写
 func producer(ch chan<- int) {
-	ch <- 100
+    ch <- 100
 }
 
 ch := make(chan int)
@@ -126,36 +126,36 @@ func main() {
 从一个已关闭的通道读取值会立刻返回，第一个返回值返回发送的值或零值，第二个可选参数负责区分读取的值是否有效，`true`表示有效，`false`表示无效。
 ```go
 func main() {
-	jobs := make(chan int, 5)
-	done := make(chan bool)
+    jobs := make(chan int, 5)
+    done := make(chan bool)
 
-	go func() {
-		for {
-			// 返回值more表示接收到的值是否有效
-			j, more := <-jobs
-			if more {
-				fmt.Println("received job", j)
-			} else {
-				fmt.Println("received all jobs")
-				done <- true
-				return
-			}
-		}
-	}()
+    go func() {
+        for {
+            // 返回值more表示接收到的值是否有效
+            j, more := <-jobs
+            if more {
+                fmt.Println("received job", j)
+            } else {
+                fmt.Println("received all jobs")
+                done <- true
+                return
+            }
+        }
+    }()
 
-	go func() {
-		for j := range 300 {
-			jobs <- j
-			fmt.Println("sent job", j)
-		}
-		close(jobs)
-		fmt.Println("sent all jobs")
-	}()
+    go func() {
+        for j := range 300 {
+            jobs <- j
+            fmt.Println("sent job", j)
+        }
+        close(jobs)
+        fmt.Println("sent all jobs")
+    }()
 
-	<-done
+    <-done
   // 验证通道状态，应该已经关闭
-	_, ok := <-jobs
-	fmt.Println("received more jobs:", ok) // received more jobs: false
+    _, ok := <-jobs
+    fmt.Println("received more jobs:", ok) // received more jobs: false
 }
 ```
 

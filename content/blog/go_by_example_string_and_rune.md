@@ -18,10 +18,10 @@ Go 中的字符串`string`是一段**只读**的字节切片，由指针+长度�
 `rune`的定义和行为和`Rust`的`char`非常相似。
 
 ```go
-const hello = "你好！Terra！"	// const hello untyped string
-world := "世界"	// var world string
+const hello = "你好！Terra！"    // const hello untyped string
+world := "世界"    // var world string
 r := '🌏'
-fmt.Printf("%c\n", r)	// 🌏
+fmt.Printf("%c\n", r)    // 🌏
 ```
 
 golang区分`untyped string`（无类型字符串常量）和`string`（字符串类型）。
@@ -36,7 +36,7 @@ var s string = "hello" // "hello" 是 untyped string，赋值后 s 成为 typed 
 
 `string`底层用`[]byte`存储，使用内置函数`len`会获取实际占用的裸字节大小。对字符串进行索引操作，会返回每个索引位置上的原始字节值。这个循环会生成字符串中所有构成 `Unicode` 码点的字节对应的十六进制值。
 ```go
-fmt.Println("Len:", len(hello))	// Len: 17
+fmt.Println("Len:", len(hello))    // Len: 17
 
 for i := 0; i < len(s); i++ {
     fmt.Printf("%x ", s[i]) // e4 bd a0 e5 a5 bd ef bc 81 54 65 72 72 61 ef bc 81
@@ -50,16 +50,16 @@ import (
   "unicode/utf8"
 )
 
-fmt.Println("Rune count: ", utf8.RuneCountInString(hello))	// Rune count: 9
+fmt.Println("Rune count: ", utf8.RuneCountInString(hello))    // Rune count: 9
 ```
 
 在循环中可以使用`range`关键字自动解码为`rune`。
 A range loop handles strings specially and decodes each rune along with its offset in the string.
 ```go
 for idx, r := range hello {
-	// fmt.Println("", r)	// 直接打印rune类型只会获得一个数字
-	// fmt.Printf("%c starts at %d\n", r, idx)	// 使用%c
-	fmt.Printf("%#U starts at %d\n", r, idx)
+    // fmt.Println("", r)    // 直接打印rune类型只会获得一个数字
+    // fmt.Printf("%c starts at %d\n", r, idx)    // 使用%c
+    fmt.Printf("%#U starts at %d\n", r, idx)
 }
 ```
 ```sh
@@ -87,7 +87,7 @@ fmt.Println(s3) // 123abc
 `strings`包包含了一些方便的函数。
 ```go
 import (
-	"strings"
+    "strings"
 )
 
 b := strings.Builder{}

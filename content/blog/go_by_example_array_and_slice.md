@@ -46,7 +46,7 @@ size of 5:       8
 ```go
 // 将index=3对应的值设置为400,后面的从4开始设置，中间跳过的均设置为零值
 b := [...]int{100, 3: 400, 500}
-fmt.Println(b)	// [100 0 0 400 500]
+fmt.Println(b)    // [100 0 0 400 500]
 ```
 
 
@@ -65,16 +65,16 @@ twoD := [2][3]int{
 切片类型的大小由指针、长度和容量决定，在64位环境下占用24B。
 ```go
 var s []string
-fmt.Println("uninit:", s, s == nil, len(s) == 0)	// uninit: [] true true
+fmt.Println("uninit:", s, s == nil, len(s) == 0)    // uninit: [] true true
 ```
 
 
 若要创建一个长度非零的切片，可使用内置函数 `make`。这里我们创建了一个长度为 3 的字符串类型切片（初始值均为零值）。默认情况下，新创建切片的容量等于其长度；如果提前知道该切片后续会扩容，可在调用 `make` 时额外传入一个参数，显式指定切片的容量。
 ```go
 s1 := make([]string, 3)
-s2 := make([]string, 3, 10)	// 显式指定切片的容量为10
-fmt.Println("emp:", s1, "len:", len(s1), "cap:", cap(s1))	// emp: [  ] len: 3 cap: 3
-fmt.Println("emp:", s2, "len:", len(s2), "cap:", cap(s2))	// emp: [  ] len: 3 cap: 10
+s2 := make([]string, 3, 10)    // 显式指定切片的容量为10
+fmt.Println("emp:", s1, "len:", len(s1), "cap:", cap(s1))    // emp: [  ] len: 3 cap: 3
+fmt.Println("emp:", s2, "len:", len(s2), "cap:", cap(s2))    // emp: [  ] len: 3 cap: 10
 ```
 
 设置切片的值和获取值的方法和数组一致。设置或获取超过切片长度（`len`）的值会`panic`。
@@ -85,7 +85,7 @@ s[2] = "c"
 fmt.Println("set:", s)
 fmt.Println("get:", s[2])
 
-s2[7] = "will panic"	// panic: runtime error: index out of range [7] with length 3
+s2[7] = "will panic"    // panic: runtime error: index out of range [7] with length 3
 ```
 
 使用内置函数`len`获取切片长度，使用内置函数`cap`获取切片容量。
@@ -98,12 +98,12 @@ fmt.Println("cap:", cap(s))
 除了这些基础操作外，切片还支持若干更强大的操作，这使得它相比数组功能更丰富。其中一个是内置函数 `append`，该函数会返回一个包含一个或多个新值的切片。需要注意的是，必须接收 `append` 的返回值，因为调用后可能会发生扩容，从而得到一个全新的切片实例。
 ```go
 s := []string{"a", "b", "c"}
-fmt.Println("s: ", s, "len:", len(s), "cap:", cap(s))	// s:  [a b c] len: 3 cap: 3
-fmt.Printf("addr: %p\n", s)		// addr: 0xc0000a6180
-s = append(s, "d")			// 发生扩容！
-s = append(s, "e", "f")	// 可以一次添加多个元素
-fmt.Println("after append:", s)	// after append: [a b c d e f]
-fmt.Printf("addr: %p\n", s)		// addr: 0xc0000901e0
+fmt.Println("s: ", s, "len:", len(s), "cap:", cap(s))    // s:  [a b c] len: 3 cap: 3
+fmt.Printf("addr: %p\n", s)        // addr: 0xc0000a6180
+s = append(s, "d")            // 发生扩容！
+s = append(s, "e", "f")    // 可以一次添加多个元素
+fmt.Println("after append:", s)    // after append: [a b c d e f]
+fmt.Printf("addr: %p\n", s)        // addr: 0xc0000901e0
 ```
 
 > 使用 %p 打印 s 时，显示的是底层数组的首地址；打印 &s 时，显示的是切片结构体本身的地址，这是两个完全不同的地址。
@@ -125,10 +125,10 @@ s := []string{"a", "b", "c", "d", "e", "f"}
 s1 := s[2:5]
 s2 := s[2:]
 s3 := s[0:2]
-fmt.Println("s1:", s1, "len:", len(s1), "cap:", cap(s1))	// s1: [c d e] len: 3 cap: 4
-fmt.Println("s2:", s2, "len:", len(s2), "cap:", cap(s2))	// s2: [c d e f] len: 4 cap: 4
-fmt.Println("s3:", s3, "len:", len(s3), "cap:", cap(s3))	// s3: [a b] len: 2 cap: 6
-s4 := s[8:]	// panic: runtime error: slice bounds out of range [8:6]
+fmt.Println("s1:", s1, "len:", len(s1), "cap:", cap(s1))    // s1: [c d e] len: 3 cap: 4
+fmt.Println("s2:", s2, "len:", len(s2), "cap:", cap(s2))    // s2: [c d e f] len: 4 cap: 4
+fmt.Println("s3:", s3, "len:", len(s3), "cap:", cap(s3))    // s3: [a b] len: 2 cap: 6
+s4 := s[8:]    // panic: runtime error: slice bounds out of range [8:6]
 ```
 
 
@@ -139,7 +139,7 @@ import (
 )
 t2 := []string{"g", "h", "i"}
 if slices.Equal(t1, t2) {
-	fmt.Println("t1 == t2")
+    fmt.Println("t1 == t2")
 }
 ```
 

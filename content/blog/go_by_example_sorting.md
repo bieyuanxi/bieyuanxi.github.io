@@ -26,10 +26,10 @@ func Float64s(x []float64) { slices.Sort(x) }
 `Ordered` 接口约束的类型必须是底层类型为整数 / 浮点数 / 字符串的类型，称之为有序类型，这些类型的共同特征是支持`<` `<=` `>` `>=`等大小比较操作。
 ```go
 type Ordered interface {
-	~int | ~int8 | ~int16 | ~int32 | ~int64 |
-		~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr |
-		~float32 | ~float64 |
-		~string
+    ~int | ~int8 | ~int16 | ~int32 | ~int64 |
+        ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uintptr |
+        ~float32 | ~float64 |
+        ~string
 }
 ```
 > 近似类型（`~T`）：匹配 “底层类型为 `T`” 的所有类型（包括自定义类型别名），比如`type MyInt int` 的底层类型是 `int`，会匹配`~int`
@@ -69,9 +69,9 @@ import (
 )
 
 lenCmp := func(a, b string) int {
-	  //	-1 if x is less than y,
-    //	 0 if x equals y,
-    //	+1 if x is greater than y.
+      //    -1 if x is less than y,
+    //     0 if x equals y,
+    //    +1 if x is greater than y.
     return cmp.Compare(len(a), len(b))
 }
 ```
@@ -86,7 +86,7 @@ fmt.Println(fruits)
 ```go
 // 函数签名要求排序函数和传入的切片具有相同的类型
 func SortFunc[S ~[]E, E any](x S, cmp func(a, b E) int) {
-	// ...
+    // ...
 }
 ```
 
@@ -102,47 +102,47 @@ where
 `slices`包里和排序有关的还有一些算法。
 ```go
 func Sort[S ~[]E, E cmp.Ordered](x S) {
-	// 
+    // 
 }
 
 func SortFunc[S ~[]E, E any](x S, cmp func(a, b E) int) {
-	//
+    //
 }
 
 func SortStableFunc[S ~[]E, E any](x S, cmp func(a, b E) int) {
-	// ...
+    // ...
 }
 
 func IsSorted[S ~[]E, E cmp.Ordered](x S) bool {
-	//
+    //
 }
 
 func IsSortedFunc[S ~[]E, E any](x S, cmp func(a, b E) int) bool {
-	//
+    //
 }
 
 // It panics if x is empty.
 func Min[S ~[]E, E cmp.Ordered](x S) E {
-	// ...
+    // ...
 }
 
 func MinFunc[S ~[]E, E any](x S, cmp func(a, b E) int) E {
-	//
+    //
 }
 
 func Max[S ~[]E, E cmp.Ordered](x S) E {
-	//
+    //
 }
 
 func MaxFunc[S ~[]E, E any](x S, cmp func(a, b E) int) E {
-	//
+    //
 }
 
 func BinarySearch[S ~[]E, E cmp.Ordered](x S, target E) (int, bool) {
-	//
+    //
 }
 
 func BinarySearchFunc[S ~[]E, E, T any](x S, target T, cmp func(E, T) int) (int, bool) {
-	// 
+    // 
 }
 ```

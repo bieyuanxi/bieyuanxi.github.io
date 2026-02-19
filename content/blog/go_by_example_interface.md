@@ -25,37 +25,37 @@ type any = interface{}
 ```go
 // 定义接口
 type Geometry interface {
-	area() float64	// 接口方法
-	perim() float64
-	scale(factor float64)
+    area() float64    // 接口方法
+    perim() float64
+    scale(factor float64)
 }
 
 // 接口作为参数
 func measure(g Geometry) {
-	fmt.Println(g)
-	fmt.Println(g.area())
-	fmt.Println(g.perim())
+    fmt.Println(g)
+    fmt.Println(g.area())
+    fmt.Println(g.perim())
 }
 
 type Rect struct {
-	width float64
-	height float64
+    width float64
+    height float64
 }
 
 // 实现接口对应方法
 func (self Rect) area() float64 {
-	return self.height * self.width
+    return self.height * self.width
 }
 
 // 实现接口对应方法
 func (self Rect) perim() float64 {
-	return 2 * self.height + 2 * self.width
+    return 2 * self.height + 2 * self.width
 }
 
 // 指针接收者实现接口方法
 func (self *Rect) scale(factor float64) {
-	self.height *= factor
-	self.width *= factor
+    self.height *= factor
+    self.width *= factor
 }
 
 // 判断接口传入的实际类型
@@ -67,25 +67,25 @@ func detectCircle(g Geometry) {
 
 
 func main() {
-	rect := Rect{width: 10, height: 20}
-	// detectCircle(rect) // 报错！存在接口方法由指针接收者实现
-	detectCircle(&rect)   // 正常
+    rect := Rect{width: 10, height: 20}
+    // detectCircle(rect) // 报错！存在接口方法由指针接收者实现
+    detectCircle(&rect)   // 正常
 }
 ```
 
 接口类型也可以作为参数。`switch`也可以将类型作为参数。
 ```go
 func test_interface(any interface{}) float64 {
-	if v, ok := any.(Geometry); ok {
-		return v.area()
-	}
-	
-	switch v := any.(type) {
-	case int:
-	    return 0.0
-	case float:
-	    return 0.0
-	}
+    if v, ok := any.(Geometry); ok {
+        return v.area()
+    }
+    
+    switch v := any.(type) {
+    case int:
+        return 0.0
+    case float:
+        return 0.0
+    }
 }
 ```
 
