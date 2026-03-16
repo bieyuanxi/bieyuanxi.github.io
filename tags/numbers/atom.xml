@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://blog.bieyuanxi.workers.dev/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;blog.bieyuanxi.workers.dev</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>numbers</tabi:current_section>
+    </tabi:metadata><title>Terra's Blog - numbers</title>
+        <subtitle>YOUR_SITE_DESCRIPTION</subtitle>
+    <link href="https://blog.bieyuanxi.workers.dev/tags/numbers/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://blog.bieyuanxi.workers.dev/tags/numbers/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2026-03-10T00:00:00+00:00</updated><id>https://blog.bieyuanxi.workers.dev/tags/numbers/atom.xml</id><entry xml:lang="en">
+        <title>Kotlin Types: Numbers</title>
+        <published>2026-03-10T00:00:00+00:00</published>
+        <updated>2026-03-10T00:00:00+00:00</updated>
+        <author>
+            <name>Terra</name>
+        </author>
+        <link rel="alternate" href="https://blog.bieyuanxi.workers.dev/blog/kotlin-types-numbers/" type="text/html"/>
+        <id>https://blog.bieyuanxi.workers.dev/blog/kotlin-types-numbers/</id>
+        
+            <content type="html">&lt;h1 id=&quot;can-kao-zi-liao&quot;&gt;参考资料&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;kotlinlang.org&#x2F;docs&#x2F;numbers.html&quot;&gt;kotlinlang: numbers&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;zheng-xing-lei-xing&quot;&gt;整型类型&lt;&#x2F;h1&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Type&lt;&#x2F;th&gt;&lt;th&gt;Size (bits)&lt;&#x2F;th&gt;&lt;th&gt;Min value&lt;&#x2F;th&gt;&lt;th&gt;Max value&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Byte&lt;&#x2F;td&gt;&lt;td&gt;8&lt;&#x2F;td&gt;&lt;td&gt;-128&lt;&#x2F;td&gt;&lt;td&gt;127&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Short&lt;&#x2F;td&gt;&lt;td&gt;16&lt;&#x2F;td&gt;&lt;td&gt;-32768&lt;&#x2F;td&gt;&lt;td&gt;32767&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Int&lt;&#x2F;td&gt;&lt;td&gt;32&lt;&#x2F;td&gt;&lt;td&gt;-2,147,483,648 (-2³¹)&lt;&#x2F;td&gt;&lt;td&gt;2,147,483,647 (2³¹ - 1)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Long&lt;&#x2F;td&gt;&lt;td&gt;64&lt;&#x2F;td&gt;&lt;td&gt;-9,223,372,036,854,775,808 (-2⁶³)&lt;&#x2F;td&gt;&lt;td&gt;9,223,372,036,854,775,807 (2⁶³ - 1)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; one =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F; Int&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; threeBillion =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 3000000000&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F; Long&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; oneLong =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1L&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt; &#x2F;&#x2F; Long&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; oneByte: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Byte&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h1 id=&quot;fu-dian-lei-xing&quot;&gt;浮点类型&lt;&#x2F;h1&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Type&lt;&#x2F;th&gt;&lt;th&gt;Size (bits)&lt;&#x2F;th&gt;&lt;th&gt;Significant bits&lt;&#x2F;th&gt;&lt;th&gt;Exponent bits&lt;&#x2F;th&gt;&lt;th&gt;Decimal digits&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Float&lt;&#x2F;td&gt;&lt;td&gt;32&lt;&#x2F;td&gt;&lt;td&gt;24&lt;&#x2F;td&gt;&lt;td&gt;8&lt;&#x2F;td&gt;&lt;td&gt;6-7&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Double&lt;&#x2F;td&gt;&lt;td&gt;64&lt;&#x2F;td&gt;&lt;td&gt;53&lt;&#x2F;td&gt;&lt;td&gt;11&lt;&#x2F;td&gt;&lt;td&gt;15-16&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; pi =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 3.14&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;          &#x2F;&#x2F; Double&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; e =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 2.7182818284&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;          &#x2F;&#x2F; Double&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; eFloat =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 2.7182818284f&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; Float, actual value is 2.7182817&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; error: Initializer type mismatch: expected &amp;#39;Double&amp;#39;, actual &amp;#39;Int&amp;#39;.&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; one: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Double&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;    &#x2F;&#x2F; Int is inferred &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h1 id=&quot;boxing-and-caching-numbers-on-the-java-virtual-machine&quot;&gt;Boxing and caching numbers on the Java Virtual Machine&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;code&gt;kotlin&lt;&#x2F;code&gt; 在&lt;code&gt;JVM&lt;&#x2F;code&gt;上遵循对数字类型的装箱（&lt;code&gt;Boxing&lt;&#x2F;code&gt;）和缓存（&lt;code&gt;Caching&lt;&#x2F;code&gt;）机制。&lt;code&gt;JVM&lt;&#x2F;code&gt; 原生支持的基础类型（如 &lt;code&gt;Kotlin&lt;&#x2F;code&gt; 的 &lt;code&gt;Int&lt;&#x2F;code&gt;、&lt;code&gt;Double&lt;&#x2F;code&gt;，对应 &lt;code&gt;Java&lt;&#x2F;code&gt; 的 &lt;code&gt;int&lt;&#x2F;code&gt;、&lt;code&gt;double&lt;&#x2F;code&gt;），直接存储数值，不占用对象内存。
+当需要把基本类型变成「可空」（如 &lt;code&gt;Int?&lt;&#x2F;code&gt;）或用于泛型时，&lt;code&gt;JVM&lt;&#x2F;code&gt; 会把基本类型包装成对应的 &lt;code&gt;Java&lt;&#x2F;code&gt; 类对象（如 &lt;code&gt;Int&lt;&#x2F;code&gt; → &lt;code&gt;Integer&lt;&#x2F;code&gt;、&lt;code&gt;Double&lt;&#x2F;code&gt; → &lt;code&gt;Double&lt;&#x2F;code&gt;），这个过程叫「装箱」。
+简单说：&lt;code&gt;Int&lt;&#x2F;code&gt; 是数值本身，&lt;code&gt;Int?&lt;&#x2F;code&gt; 是装着这个数值的「对象盒子」。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jvm-de-shu-zi-huan-cun-you-hua&quot;&gt;JVM 的数字缓存优化&lt;&#x2F;h2&gt;
+&lt;p&gt;为了节省内存，&lt;code&gt;JVM&lt;&#x2F;code&gt; 对 -128 ~ 127 范围内的整数（刚好是 &lt;code&gt;byte&lt;&#x2F;code&gt; 类型的取值范围）做了特殊处理：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;这个范围内的数字被装箱成 &lt;code&gt;Integer&lt;&#x2F;code&gt; 对象时，不会新建对象，而是复用「缓存池」里的同一个对象；&lt;&#x2F;li&gt;
+&lt;li&gt;超出这个范围的数字，每次装箱都会新建一个全新的 &lt;code&gt;Integer&lt;&#x2F;code&gt; 对象。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;观察以下两个例子的结果：&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; a: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 100&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;          &#x2F;&#x2F; 基本类型，直接存数值 100&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; boxedA: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;? = a      &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 装箱，复用缓存池里的 Integer(100) 对象&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; anotherBoxedA: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;? = a &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 装箱，还是复用同一个 Integer(100) 对象&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;println&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;(boxedA === anotherBoxedA) &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; true&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; b: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 10000&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;        &#x2F;&#x2F; 基本类型，存数值 10000&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; boxedB: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;? = b      &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 装箱，新建一个 Integer(10000) 对象&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; anotherBoxedB: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;? = b &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 装箱，又新建一个全新的 Integer(10000) 对象&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;println&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;(boxedB === anotherBoxedB) &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; false（不是同一个对象）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;println&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt;(boxedB == anotherBoxedB)  &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; true（数值相等）&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;===&lt;&#x2F;code&gt; 是 &lt;code&gt;Kotlin&lt;&#x2F;code&gt; 的「引用相等」：判断两个变量是否指向同一个对象，所以，千万不要用 &lt;code&gt;===&lt;&#x2F;code&gt; 比较可装箱的数字（如 &lt;code&gt;Int?&lt;&#x2F;code&gt;、&lt;code&gt;Short?&lt;&#x2F;code&gt; 等）&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;==&lt;&#x2F;code&gt; 是「结构相等」：判断两个对象的数值是否相同&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h1 id=&quot;xian-shi-lei-xing-zhuan-huan&quot;&gt;显式类型转换&lt;&#x2F;h1&gt;
+&lt;p&gt;数字类型(Number)支持显式转换。例如：&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;toByte(): Byte (deprecated for Float and Double)&lt;&#x2F;li&gt;
+&lt;li&gt;toShort(): Short&lt;&#x2F;li&gt;
+&lt;li&gt;toInt(): Int&lt;&#x2F;li&gt;
+&lt;li&gt;toLong(): Long&lt;&#x2F;li&gt;
+&lt;li&gt;toFloat(): Float&lt;&#x2F;li&gt;
+&lt;li&gt;toDouble(): Double&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; byte: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Byte&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; OK, literals are checked statically&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; intAssignedByte: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; = byte &lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; Initializer type mismatch&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span&gt; intConvertedByte: &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type&quot;&gt;Int&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; = byte.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;toInt&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;println&lt;&#x2F;span&gt;&lt;span&gt;(intConvertedByte)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h1 id=&quot;wei-cao-zuo&quot;&gt;位操作&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;shl(bits) – signed shift left&lt;&#x2F;li&gt;
+&lt;li&gt;shr(bits) – signed shift right&lt;&#x2F;li&gt;
+&lt;li&gt;ushr(bits) – unsigned shift right&lt;&#x2F;li&gt;
+&lt;li&gt;and(bits) – bitwise AND&lt;&#x2F;li&gt;
+&lt;li&gt;or(bits) – bitwise OR&lt;&#x2F;li&gt;
+&lt;li&gt;xor(bits) – bitwise XOR&lt;&#x2F;li&gt;
+&lt;li&gt;inv() – bitwise inversion&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;kotlin&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; x =&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt; 1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; xShiftedLeft = (x shl &lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;println&lt;&#x2F;span&gt;&lt;span&gt;(xShiftedLeft)  &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 4&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-keyword&quot;&gt;val&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator&quot;&gt; xAnd = x and &lt;&#x2F;span&gt;&lt;span class=&quot;z-constant z-numeric&quot;&gt;0x000FF000&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-entity z-name z-function&quot;&gt;println&lt;&#x2F;span&gt;&lt;span&gt;(xAnd)          &lt;&#x2F;span&gt;&lt;span class=&quot;z-comment&quot;&gt;&#x2F;&#x2F; 0&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</content>
+        <summary type="html">旧日的诅咒挥之不去...</summary>
+        </entry>
+</feed>
